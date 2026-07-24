@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://gt6xxg5rx55w"]
+
+[ext_resource type="PackedScene" uid="uid://chp5r0rj4hfwr" path="res://scenes/uis/spell_container.tscn" id="1_h3ky4"]
+
+[node name="SpellContainer" unique_id=507622480 instance=ExtResource("1_h3ky4")]
+offset_left = 0.0
+offset_right = 60.0
+
+[node name="TextureRect" parent="." index="0" unique_id=525416451]
+modulate = Color(0.57254905, 0.48235294, 0.5882353, 1)
+
+[node name="SpellTexture" parent="." index="1" unique_id=29329306]
+modulate = Color(0.31764707, 0.22745098, 0.33333334, 1)

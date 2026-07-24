@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://guw7jhgqvnnh"]
+
+[ext_resource type="PackedScene" uid="uid://ocjc24qnjll4" path="res://scenes/entities/projectiles/_projectile.tscn" id="1_judd4"]
+[ext_resource type="Texture2D" uid="uid://bg7fikhd87ui6" path="res://sprites/card-thunder.png" id="2_dgoax"]
+
+[node name="Thunder" unique_id=521734191 instance=ExtResource("1_judd4")]
+life = 0.0
+damage = 1.0
+
+[node name="Sprite2D" parent="SpritesContainer" parent_id_path=PackedInt32Array(870819497) index="0" unique_id=2042838768]
+texture = ExtResource("2_dgoax")

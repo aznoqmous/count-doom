@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://y5ji7ku56iol"]
+
+[ext_resource type="PackedScene" uid="uid://ocjc24qnjll4" path="res://scenes/entities/projectiles/_projectile.tscn" id="1_qdnx5"]
+
+[node name="FireBall" unique_id=521734191 instance=ExtResource("1_qdnx5")]
+position_oriented = true
+life = 3.0
+damage = 1.0
+move_per_turn = 2.0
+direction = Vector2i(1, 0)

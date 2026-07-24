@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="SpellResource" format=3 uid="uid://3k10hilqdhf1"]
+
+[ext_resource type="Script" uid="uid://dxaqev8o1id3w" path="res://scripts/resources/spell_resource.gd" id="1_2bhqb"]
+[ext_resource type="PackedScene" uid="uid://cgsiad6snalx" path="res://scenes/entities/spell_casts/thunder_cast.tscn" id="2_i0260"]
+[ext_resource type="Texture2D" uid="uid://bg7fikhd87ui6" path="res://sprites/card-thunder.png" id="2_r7mpk"]
+
+[resource]
+script = ExtResource("1_2bhqb")
+name = "Thunder"
+texture = ExtResource("2_r7mpk")
+spell_cast = ExtResource("2_i0260")
+metadata/_custom_type_script = "uid://dxaqev8o1id3w"

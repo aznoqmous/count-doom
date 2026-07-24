@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dqq25gsycls3i"]
+
+[ext_resource type="Script" uid="uid://7ml4urkw7ddj" path="res://scripts/spells/spell_cast.gd" id="1_tf7rg"]
+
+[node name="SpellCast" type="Node2D" unique_id=329227150]
+script = ExtResource("1_tf7rg")

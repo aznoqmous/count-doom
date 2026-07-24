@@ -1,0 +1,91 @@
+[gd_scene format=3 uid="uid://r1lyuaubwhdi"]
+
+[ext_resource type="Script" uid="uid://cuyvfhbk0htuo" path="res://scripts/uis/number_control.gd" id="1_nxknd"]
+[ext_resource type="Resource" uid="uid://byirslqc51dbt" path="res://resources/spells/fire_ball.tres" id="2_3ohqx"]
+[ext_resource type="Texture2D" uid="uid://dqwqeir26r5qm" path="res://sprites/tile.png" id="2_by3wn"]
+[ext_resource type="FontFile" uid="uid://b0lwjdjdande4" path="res://Gaegu-Bold.ttf" id="3_3ohqx"]
+[ext_resource type="PackedScene" uid="uid://gt6xxg5rx55w" path="res://scenes/uis/selected_spell_container.tscn" id="4_jqyta"]
+[ext_resource type="PackedScene" uid="uid://chp5r0rj4hfwr" path="res://scenes/uis/spell_container.tscn" id="4_nxknd"]
+[ext_resource type="Texture2D" uid="uid://ki1qnac8kifs" path="res://sprites/cross.png" id="7_hd0u1"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_y201y"]
+font = ExtResource("3_3ohqx")
+font_size = 40
+
+[node name="NumberControl" type="VBoxContainer" unique_id=286489762 node_paths=PackedStringArray("number_label", "label_control", "spell_container", "spell_selection_container", "available_spells_container", "clear_spell_container")]
+offset_right = 60.0
+offset_bottom = 52.0
+theme_override_constants/separation = -8
+script = ExtResource("1_nxknd")
+number_label = NodePath("LabelControl/Label")
+label_control = NodePath("LabelControl")
+spell_container = NodePath("VBoxContainer/SelectedSpellContainer")
+spell_selection_container = NodePath("VBoxContainer/SpellSelectionContainer")
+available_spells_container = NodePath("VBoxContainer/SpellSelectionContainer/AvailableSpellsContainer")
+clear_spell_container = NodePath("VBoxContainer/SpellSelectionContainer/ClearSpell")
+default_color = Color(0.57254905, 0.48235294, 0.5882353, 1)
+active_color = Color(1, 1, 1, 1)
+
+[node name="LabelControl" type="Control" parent="." unique_id=475689733]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+mouse_filter = 1
+
+[node name="TextureRect" type="TextureRect" parent="LabelControl" unique_id=825090793]
+modulate = Color(0.24313726, 0.18039216, 0.2509804, 1)
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_by3wn")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="LabelControl" unique_id=853494856]
+modulate = Color(0.57254905, 0.48235294, 0.5882353, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "9"
+label_settings = SubResource("LabelSettings_y201y")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=996660197]
+layout_mode = 2
+theme_override_constants/separation = -8
+
+[node name="SelectedSpellContainer" parent="VBoxContainer" unique_id=507622480 instance=ExtResource("4_jqyta")]
+visible = false
+layout_mode = 2
+
+[node name="SpellSelectionContainer" type="VBoxContainer" parent="VBoxContainer" unique_id=1366971478]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = -8
+
+[node name="AvailableSpellsContainer" type="VBoxContainer" parent="VBoxContainer/SpellSelectionContainer" unique_id=1542668492]
+layout_mode = 2
+theme_override_constants/separation = -8
+
+[node name="SpellContainer" parent="VBoxContainer/SpellSelectionContainer/AvailableSpellsContainer" unique_id=301933677 instance=ExtResource("4_nxknd")]
+layout_mode = 2
+spell_resource = ExtResource("2_3ohqx")
+
+[node name="SpellContainer2" parent="VBoxContainer/SpellSelectionContainer/AvailableSpellsContainer" unique_id=469180182 instance=ExtResource("4_nxknd")]
+layout_mode = 2
+spell_resource = ExtResource("2_3ohqx")
+
+[node name="ClearSpell" parent="VBoxContainer/SpellSelectionContainer" unique_id=910837317 instance=ExtResource("4_nxknd")]
+visible = false
+layout_mode = 2
+
+[node name="SpellTexture" parent="VBoxContainer/SpellSelectionContainer/ClearSpell" index="1" unique_id=29329306]
+texture = ExtResource("7_hd0u1")
+
+[editable path="VBoxContainer/SpellSelectionContainer/ClearSpell"]

@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://cgsiad6snalx"]
+
+[ext_resource type="PackedScene" uid="uid://dqq25gsycls3i" path="res://scenes/entities/spell_casts/_spell_cast.tscn" id="1_0qib7"]
+[ext_resource type="PackedScene" uid="uid://guw7jhgqvnnh" path="res://scenes/entities/projectiles/thunder.tscn" id="2_tcoqx"]
+
+[node name="ThunderCast" unique_id=329227150 instance=ExtResource("1_0qib7")]
+
+[node name="Thunder" parent="." index="0" unique_id=521734191 instance=ExtResource("2_tcoqx")]
+position = Vector2(120, 0)
+
+[node name="Thunder2" parent="." index="1" unique_id=570888346 instance=ExtResource("2_tcoqx")]
+position = Vector2(240, 0)
+
+[node name="Thunder3" parent="." index="2" unique_id=709259762 instance=ExtResource("2_tcoqx")]
+position = Vector2(-120, 0)
+
+[node name="Thunder4" parent="." index="3" unique_id=708606432 instance=ExtResource("2_tcoqx")]
+position = Vector2(-240, 0)
+
+[node name="Thunder5" parent="." index="4" unique_id=673112180 instance=ExtResource("2_tcoqx")]
+position = Vector2(0, -120)
+
+[node name="Thunder6" parent="." index="5" unique_id=1257252008 instance=ExtResource("2_tcoqx")]
+position = Vector2(0, -240)
+
+[node name="Thunder7" parent="." index="6" unique_id=975752817 instance=ExtResource("2_tcoqx")]
+position = Vector2(0, 120)
+
+[node name="Thunder8" parent="." index="7" unique_id=2056567279 instance=ExtResource("2_tcoqx")]
+position = Vector2(0, 240)

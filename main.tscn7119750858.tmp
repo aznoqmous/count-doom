@@ -1,0 +1,105 @@
+[gd_scene format=4 uid="uid://31ixsg8wcesh"]
+
+[ext_resource type="Script" uid="uid://cssme21ufunv8" path="res://scripts/main.gd" id="1_0xm2m"]
+[ext_resource type="TileSet" uid="uid://dkla0dyqjbvjj" path="res://tileset.tres" id="2_h2yge"]
+[ext_resource type="Script" uid="uid://ca2u5p05xq1lt" path="res://scripts/entities/player.gd" id="3_1bvp3"]
+[ext_resource type="Texture2D" uid="uid://bbvpyxx2gsr2y" path="res://sprites/player.png" id="3_h2yge"]
+[ext_resource type="Script" uid="uid://dxaqev8o1id3w" path="res://scripts/resources/spell_resource.gd" id="3_kek77"]
+[ext_resource type="PackedScene" uid="uid://berwwwljlnhrx" path="res://scenes/entities/spider.tscn" id="5_lquwl"]
+[ext_resource type="Script" uid="uid://c24puqccwhg40" path="res://scripts/uis/number_container.gd" id="6_5vw27"]
+[ext_resource type="PackedScene" uid="uid://r1lyuaubwhdi" path="res://scenes/uis/number_control.tscn" id="6_7mycd"]
+[ext_resource type="Resource" uid="uid://byirslqc51dbt" path="res://resources/spells/fire_ball.tres" id="7_272bh"]
+
+[node name="Main" type="Node2D" unique_id=1080260412 node_paths=PackedStringArray("tile_map_layer", "foes_container", "player", "number_container")]
+script = ExtResource("1_0xm2m")
+tileset = ExtResource("2_h2yge")
+tile_map_layer = NodePath("World/TileMapLayer")
+foes_container = NodePath("World/FoesContainer")
+player = NodePath("World/Player")
+spells = Array[ExtResource("3_kek77")]([ExtResource("7_272bh"), ExtResource("7_272bh")])
+number_container = NodePath("CanvasLayer/Control/NumberContainer")
+
+[node name="World" type="Node2D" parent="." unique_id=349111133]
+position = Vector2(577, 326)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="World" unique_id=1397225089]
+modulate = Color(0.4392157, 0.3372549, 0.45882353, 1)
+position = Vector2(-60, -74)
+tile_map_data = PackedByteArray("AAAAAAAAAQAAAAAAAAABAAAAAQAAAAAAAAACAAAAAQAAAAAAAAADAAAAAQAAAAAAAAAEAAAAAQAAAAAAAAAFAAAAAQAAAAAAAAAHAAAAAQAAAAAAAAAHAAEAAQAAAAAAAAAHAAIAAQAAAAAAAAAHAAMAAQAAAAAAAAAHAAQAAQAAAAAAAAAHAAUAAQAAAAAAAAAAAAEAAQAAAAAAAAABAAEAAQAAAAAAAAACAAEAAQAAAAAAAAADAAEAAQAAAAAAAAAEAAEAAQAAAAAAAAAFAAEAAQAAAAAAAAAGAAMAAQAAAAAAAAAFAAMAAQAAAAAAAAAEAAMAAQAAAAAAAAACAAMAAQAAAAAAAAABAAMAAQAAAAAAAAAEAAIAAQAAAAAAAAAFAAIAAQAAAAAAAAAAAAMAAQAAAAAAAAAAAAQAAQAAAAAAAAABAAQAAQAAAAAAAAABAAUAAQAAAAAAAAACAAUAAQAAAAAAAAADAAUAAQAAAAAAAAAEAAUAAQAAAAAAAAAFAAUAAQAAAAAAAAAFAAQAAQAAAAAAAAAGAAQAAQAAAAAAAAAGAAUAAQAAAAAAAAAEAAQAAQAAAAAAAAADAAQAAQAAAAAAAAACAAQAAQAAAAAAAAAAAAUAAQAAAAAAAAAIAAAAAQAAAAAAAAAIAAEAAQAAAAAAAAAIAAIAAQAAAAAAAAAIAAMAAQAAAAAAAAAIAAQAAQAAAAAAAAAIAAUAAQAAAAAAAAAJAAUAAQAAAAAAAAAJAAQAAQAAAAAAAAAJAAMAAQAAAAAAAAAJAAAAAQAAAAAAAAAJAAEAAQAAAAAAAAAJAAIAAQAAAAAAAAAGAAAAAQAAAAAAAAA=")
+tile_set = ExtResource("2_h2yge")
+
+[node name="Player" type="Node2D" parent="World" unique_id=1997000520 node_paths=PackedStringArray("sprites_container")]
+script = ExtResource("3_1bvp3")
+sprites_container = NodePath("SpritesContainer")
+
+[node name="SpritesContainer" type="Node2D" parent="World/Player" unique_id=999815704]
+
+[node name="Sprite2D" type="Sprite2D" parent="World/Player/SpritesContainer" unique_id=2119023179]
+position = Vector2(0, -44)
+texture = ExtResource("3_h2yge")
+
+[node name="Camera2D" type="Camera2D" parent="World/Player" unique_id=1252037715]
+position = Vector2(0, 1)
+position_smoothing_enabled = true
+
+[node name="FoesContainer" type="Node2D" parent="World" unique_id=607431775]
+
+[node name="Spider" parent="World/FoesContainer" unique_id=521734191 instance=ExtResource("5_lquwl")]
+position = Vector2(360, 0)
+
+[node name="Spider2" parent="World/FoesContainer" unique_id=730736097 instance=ExtResource("5_lquwl")]
+position = Vector2(480, 240)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=530670496]
+
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=1455349961]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NumberContainer" type="Control" parent="CanvasLayer/Control" unique_id=241174823 node_paths=PackedStringArray("container")]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 26.0
+offset_bottom = 75.0
+grow_horizontal = 2
+script = ExtResource("6_5vw27")
+container = NodePath("Container")
+
+[node name="Container" type="HBoxContainer" parent="CanvasLayer/Control/NumberContainer" unique_id=169585653]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = -10
+alignment = 1
+
+[node name="NumberControl" parent="CanvasLayer/Control/NumberContainer/Container" unique_id=1673323686 instance=ExtResource("6_7mycd")]
+layout_mode = 2
+
+[node name="NumberControl2" parent="CanvasLayer/Control/NumberContainer/Container" unique_id=1593622192 instance=ExtResource("6_7mycd")]
+layout_mode = 2
+number = 8
+spell_resource = ExtResource("7_272bh")
+
+[node name="NumberControl3" parent="CanvasLayer/Control/NumberContainer/Container" unique_id=693831946 instance=ExtResource("6_7mycd")]
+layout_mode = 2
+number = 7
+
+[node name="NumberControl4" parent="CanvasLayer/Control/NumberContainer/Container" unique_id=633784828 instance=ExtResource("6_7mycd")]
+layout_mode = 2
+number = 6
+
+[node name="NumberControl5" parent="CanvasLayer/Control/NumberContainer/Container" unique_id=1059075370 instance=ExtResource("6_7mycd")]
+layout_mode = 2
+number = 5
+
+[node name="NumberControl6" parent="CanvasLayer/Control/NumberContainer/Container" unique_id=1339778139 instance=ExtResource("6_7mycd")]
+layout_mode = 2
+number = 4

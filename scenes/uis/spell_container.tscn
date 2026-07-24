@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://chp5r0rj4hfwr"]
+
+[ext_resource type="Script" uid="uid://d1upo7b0dpaah" path="res://scripts/uis/spell_container.gd" id="1_ll8m2"]
+[ext_resource type="Texture2D" uid="uid://dqwqeir26r5qm" path="res://sprites/tile.png" id="1_lry78"]
+[ext_resource type="Texture2D" uid="uid://c8r3kr1dv7eko" path="res://sprites/cards/card-fire.png" id="2_ll8m2"]
+
+[node name="SpellContainer" type="Control" unique_id=507622480 node_paths=PackedStringArray("spell_texture_rect")]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1.0
+offset_top = 48.0
+offset_right = 61.0
+offset_bottom = 108.0
+mouse_default_cursor_shape = 2
+script = ExtResource("1_ll8m2")
+spell_texture_rect = NodePath("SpellTexture")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=525416451]
+modulate = Color(0.16796875, 0.16796875, 0.16796875, 1)
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_lry78")
+expand_mode = 1
+
+[node name="SpellTexture" type="TextureRect" parent="." unique_id=29329306]
+modulate = Color(0.43359375, 0.43359375, 0.43359375, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 13.0
+offset_top = 14.0
+offset_right = -13.0
+offset_bottom = -14.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_ll8m2")
+expand_mode = 1
+stretch_mode = 5

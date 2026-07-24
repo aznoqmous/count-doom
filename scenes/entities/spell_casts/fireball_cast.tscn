@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://c2yum12rytw35"]
+
+[ext_resource type="PackedScene" uid="uid://dqq25gsycls3i" path="res://scenes/entities/spell_casts/_spell_cast.tscn" id="1_rn2pb"]
+[ext_resource type="PackedScene" uid="uid://y5ji7ku56iol" path="res://scenes/entities/projectiles/fire_ball.tscn" id="2_2u8et"]
+
+[node name="FireballCast" unique_id=329227150 instance=ExtResource("1_rn2pb")]
+direction_oriented = true
+
+[node name="FireBall" parent="." index="0" unique_id=521734191 instance=ExtResource("2_2u8et")]
+position = Vector2(120, 0)
