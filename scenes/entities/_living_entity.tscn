@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://bn1cka2e8ouq8"]
+
+[ext_resource type="PackedScene" uid="uid://dd2b5nspgi5bu" path="res://scenes/entities/_grid_entity.tscn" id="1_mlefb"]
+[ext_resource type="Script" uid="uid://ci6rqy34vnssp" path="res://scripts/entities/living_entity.gd" id="2_w7aiv"]
+[ext_resource type="Texture2D" uid="uid://bq5gvu3fk5ncb" path="res://sprites/heart.png" id="3_m7p7w"]
+[ext_resource type="FontFile" uid="uid://b0lwjdjdande4" path="res://Gaegu-Bold.ttf" id="4_0wbid"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_dh7nk"]
+font = ExtResource("4_0wbid")
+font_size = 42
+outline_size = 1
+
+[node name="LivingEntity" unique_id=521734191 node_paths=PackedStringArray("hp_label") instance=ExtResource("1_mlefb")]
+script = ExtResource("2_w7aiv")
+hp_label = NodePath("HpLabel")
+max_health = 3
+
+[node name="Heart" type="Sprite2D" parent="." index="2" unique_id=2061746553]
+modulate = Color(0.5848766, 0.2572178, 0.35274857, 1)
+position = Vector2(29, 13)
+scale = Vector2(0.435, 0.435)
+texture = ExtResource("3_m7p7w")
+
+[node name="HpLabel" type="Label" parent="." index="3" unique_id=892117155]
+offset_left = 12.0
+offset_top = -6.0
+offset_right = 52.0
+offset_bottom = 37.0
+text = "3"
+label_settings = SubResource("LabelSettings_dh7nk")
+horizontal_alignment = 1

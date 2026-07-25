@@ -1,10 +1,92 @@
 [gd_scene format=3 uid="uid://y5ji7ku56iol"]
 
 [ext_resource type="PackedScene" uid="uid://ocjc24qnjll4" path="res://scenes/entities/projectiles/_projectile.tscn" id="1_qdnx5"]
+[ext_resource type="Texture2D" uid="uid://b66tqpgn7bo0d" path="res://sprites/spells/fire-ball.png" id="2_nh25g"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wo12e"]
+atlas = ExtResource("2_nh25g")
+region = Rect2(0, 0, 150, 130)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_80qfi"]
+atlas = ExtResource("2_nh25g")
+region = Rect2(150, 0, 150, 130)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7k0k1"]
+atlas = ExtResource("2_nh25g")
+region = Rect2(300, 0, 150, 130)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7jqvh"]
+atlas = ExtResource("2_nh25g")
+region = Rect2(450, 0, 150, 130)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bl5gi"]
+atlas = ExtResource("2_nh25g")
+region = Rect2(600, 0, 150, 130)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6lybo"]
+atlas = ExtResource("2_nh25g")
+region = Rect2(750, 0, 150, 130)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nqpd7"]
+atlas = ExtResource("2_nh25g")
+region = Rect2(900, 0, 150, 130)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m4v5j"]
+atlas = ExtResource("2_nh25g")
+region = Rect2(1050, 0, 150, 130)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uitfa"]
+atlas = ExtResource("2_nh25g")
+region = Rect2(1200, 0, 150, 130)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_y201y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wo12e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_80qfi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7k0k1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7jqvh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bl5gi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6lybo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nqpd7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m4v5j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uitfa")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 12.0
+}]
 
 [node name="FireBall" unique_id=521734191 instance=ExtResource("1_qdnx5")]
 position_oriented = true
 life = 3.0
-damage = 1.0
+damage = 2.0
 move_per_turn = 2.0
 direction = Vector2i(1, 0)
+
+[node name="Sprite2D" parent="SpritesContainer" parent_id_path=PackedInt32Array(870819497) index="0" unique_id=2042838768]
+visible = false
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SpritesContainer" parent_id_path=PackedInt32Array(870819497) index="1" unique_id=540966333]
+modulate = Color(1, 0.5854187, 0.18359375, 1)
+position = Vector2(0, -18)
+sprite_frames = SubResource("SpriteFrames_y201y")
+autoplay = "default"
+frame_progress = 0.9665231

@@ -8,13 +8,13 @@
 [ext_resource type="Resource" uid="uid://3k10hilqdhf1" path="res://resources/spells/thunder.tres" id="5_4c57u"]
 [ext_resource type="Script" uid="uid://c24puqccwhg40" path="res://scripts/uis/number_container.gd" id="6_5vw27"]
 [ext_resource type="PackedScene" uid="uid://r1lyuaubwhdi" path="res://scenes/uis/number_control.tscn" id="6_7mycd"]
-[ext_resource type="Resource" uid="uid://bsyeu0uampni1" path="res://resources/spells/rock.tres" id="6_vivmo"]
 [ext_resource type="Resource" uid="uid://byirslqc51dbt" path="res://resources/spells/fire_ball.tres" id="7_272bh"]
 [ext_resource type="Texture2D" uid="uid://c8r3kr1dv7eko" path="res://sprites/cards/card-fire.png" id="8_efxa6"]
 [ext_resource type="Texture2D" uid="uid://bq5gvu3fk5ncb" path="res://sprites/heart.png" id="9_vivmo"]
 [ext_resource type="PackedScene" uid="uid://5cfb3axklie4" path="res://scenes/entities/foes/slime.tscn" id="9_ycdy4"]
 [ext_resource type="FontFile" uid="uid://b0lwjdjdande4" path="res://Gaegu-Bold.ttf" id="10_2cqfq"]
 [ext_resource type="PackedScene" uid="uid://ctfm1h873bc3k" path="res://scenes/entities/foes/spider.tscn" id="11_vivmo"]
+[ext_resource type="PackedScene" uid="uid://mxcyo6e0uvc4" path="res://scenes/entities/foes/skeleton.tscn" id="12_dg77c"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_yaehf"]
 font = ExtResource("10_2cqfq")
@@ -24,12 +24,12 @@ outline_size = 1
 [node name="Main" type="Node2D" unique_id=1080260412 node_paths=PackedStringArray("tile_map_layer", "foes_container", "projectiles_container", "player", "number_container")]
 script = ExtResource("1_0xm2m")
 tileset = ExtResource("2_h2yge")
+spells = Array[ExtResource("3_kek77")]([ExtResource("7_272bh"), ExtResource("5_4c57u")])
+count_down_length = 4
 tile_map_layer = NodePath("World/TileMapLayer")
 foes_container = NodePath("World/FoesContainer")
 projectiles_container = NodePath("World/ProjectilesContainer")
 player = NodePath("World/Player")
-spells = Array[ExtResource("3_kek77")]([ExtResource("7_272bh"), ExtResource("5_4c57u"), ExtResource("6_vivmo")])
-count_down_length = 4
 number_container = NodePath("CanvasLayer/NumberContainer")
 
 [node name="World" type="Node2D" parent="." unique_id=349111133]
@@ -40,12 +40,10 @@ position = Vector2(-60, -74)
 tile_map_data = PackedByteArray("AAAAAAAAAQAAAAAAAAABAAAAAQAAAAAAAAACAAAAAQAAAAAAAAADAAAAAQAAAAAAAAAEAAAAAQAAAAAAAAAFAAAAAQAAAAAAAAAHAAAAAQAAAAAAAAAHAAEAAQAAAAAAAAAHAAIAAQAAAAAAAAAAAAEAAQAAAAAAAAABAAEAAQAAAAAAAAACAAEAAQAAAAAAAAADAAEAAQAAAAAAAAAEAAEAAQAAAAAAAAAFAAEAAQAAAAAAAAAEAAIAAQAAAAAAAAAFAAIAAQAAAAAAAAAIAAAAAQAAAAAAAAAIAAEAAQAAAAAAAAAIAAIAAQAAAAAAAAAJAAAAAQAAAAAAAAAJAAEAAQAAAAAAAAAJAAIAAQAAAAAAAAAGAAAAAQAAAAAAAAAAAAIAAQAAAAAAAAABAAIAAQAAAAAAAAACAAIAAQAAAAAAAAADAAIAAQAAAAAAAAAAAP//AQAAAAAAAAABAP//AQAAAAAAAAACAP//AQAAAAAAAAADAP//AQAAAAAAAAAFAP//AQAAAAAAAAAGAAIAAQAAAAAAAAAGAAEAAQAAAAAAAAAGAP//AQAAAAAAAAAHAP//AQAAAAAAAAAIAP//AQAAAAAAAAAJAP//AQAAAAAAAAA=")
 tile_set = ExtResource("2_h2yge")
 
-[node name="Player" type="Node2D" parent="World" unique_id=1997000520 node_paths=PackedStringArray("spell_sprite", "hp_label", "sprites_container", "debug_label")]
+[node name="Player" type="Node2D" parent="World" unique_id=1997000520 node_paths=PackedStringArray("spell_sprite", "hp_label")]
 script = ExtResource("3_1bvp3")
 spell_sprite = NodePath("SpellSprite")
 hp_label = NodePath("HpLabel")
-sprites_container = NodePath("SpritesContainer")
-debug_label = NodePath("DebugLabel")
 
 [node name="SpritesContainer" type="Node2D" parent="World/Player" unique_id=999815704]
 
@@ -91,28 +89,13 @@ horizontal_alignment = 1
 [node name="FoesContainer" type="Node2D" parent="World" unique_id=607431775]
 
 [node name="Spider" parent="World/FoesContainer" unique_id=521734191 instance=ExtResource("11_vivmo")]
-position = Vector2(960, -120)
+position = Vector2(840, 0)
 
 [node name="Slime" parent="World/FoesContainer" unique_id=1103140008 instance=ExtResource("9_ycdy4")]
 position = Vector2(720, 0)
 
-[node name="Slime3" parent="World/FoesContainer" unique_id=2146827196 instance=ExtResource("9_ycdy4")]
-position = Vector2(600, 0)
-
-[node name="Slime4" parent="World/FoesContainer" unique_id=2105491341 instance=ExtResource("9_ycdy4")]
-position = Vector2(600, 120)
-
-[node name="Slime5" parent="World/FoesContainer" unique_id=1728427001 instance=ExtResource("9_ycdy4")]
-position = Vector2(720, 120)
-
-[node name="Slime6" parent="World/FoesContainer" unique_id=978085691 instance=ExtResource("9_ycdy4")]
-position = Vector2(600, -120)
-
-[node name="Slime7" parent="World/FoesContainer" unique_id=389035135 instance=ExtResource("9_ycdy4")]
-position = Vector2(720, -120)
-
-[node name="Slime2" parent="World/FoesContainer" unique_id=2017721515 instance=ExtResource("9_ycdy4")]
-position = Vector2(960, 120)
+[node name="Skeleton" parent="World/FoesContainer" unique_id=1843623259 instance=ExtResource("12_dg77c")]
+position = Vector2(720, 240)
 
 [node name="ProjectilesContainer" type="Node2D" parent="World" unique_id=345298138]
 

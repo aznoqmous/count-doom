@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://yvawokhjln71"]
+
+[ext_resource type="Script" uid="uid://cuv65j7nmq2r2" path="res://scripts/uis/damage_control.gd" id="1_p8yjb"]
+[ext_resource type="FontFile" uid="uid://b0lwjdjdande4" path="res://Gaegu-Bold.ttf" id="2_q40mj"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_y201y"]
+font = ExtResource("2_q40mj")
+outline_size = 2
+
+[node name="DamageControl" type="Node2D" unique_id=1204869626 node_paths=PackedStringArray("label")]
+script = ExtResource("1_p8yjb")
+label = NodePath("Label")
+
+[node name="Label" type="Label" parent="." unique_id=1508316408]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "10"
+label_settings = SubResource("LabelSettings_y201y")
+horizontal_alignment = 1

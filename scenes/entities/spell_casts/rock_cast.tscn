@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://b6voc2nhcqukt"]
+
+[ext_resource type="PackedScene" uid="uid://dqq25gsycls3i" path="res://scenes/entities/spell_casts/_spell_cast.tscn" id="1_uqxqi"]
+[ext_resource type="PackedScene" uid="uid://chupafldledxu" path="res://scenes/entities/projectiles/rock_explosion.tscn" id="2_uqxqi"]
+
+[node name="RockCast" unique_id=329227150 instance=ExtResource("1_uqxqi")]
+direction_oriented = true
+
+[node name="RockExplosion4" parent="." index="0" unique_id=521734191 instance=ExtResource("2_uqxqi")]
+position = Vector2(120, 120)
+
+[node name="RockExplosion5" parent="." index="1" unique_id=1386563933 instance=ExtResource("2_uqxqi")]
+position = Vector2(120, 0)
+
+[node name="RockExplosion6" parent="." index="2" unique_id=509412809 instance=ExtResource("2_uqxqi")]
+position = Vector2(120, -120)
+
+[node name="RockExplosion7" parent="." index="3" unique_id=925684656 instance=ExtResource("2_uqxqi")]
+position = Vector2(240, -120)
+
+[node name="RockExplosion8" parent="." index="4" unique_id=1404804070 instance=ExtResource("2_uqxqi")]
+position = Vector2(240, 0)
+
+[node name="RockExplosion9" parent="." index="5" unique_id=1332693914 instance=ExtResource("2_uqxqi")]
+position = Vector2(240, 120)

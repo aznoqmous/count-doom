@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://5cfb3axklie4"]
+
+[ext_resource type="PackedScene" uid="uid://8s5bgj71rnc3" path="res://scenes/entities/_foe.tscn" id="1_oimbd"]
+[ext_resource type="Texture2D" uid="uid://bim7f2ugfsb44" path="res://sprites/foes/slime.png" id="2_7k7ij"]
+
+[node name="Slime" unique_id=521734191 instance=ExtResource("1_oimbd")]
+move_each = 4
+max_health = 1
+
+[node name="Sprite2D" parent="SpritesContainer" parent_id_path=PackedInt32Array(870819497) index="0" unique_id=2042838768]
+position = Vector2(0, -18)
+texture = ExtResource("2_7k7ij")

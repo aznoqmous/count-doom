@@ -2,14 +2,16 @@ extends Node2D
 class_name GridEntity
 
 @export var movement_oriented := true
-@export var sprites_container: Node2D
 @export var direction : Vector2i
+@export var sprites_container: Node2D
+@export var debug_label: Label
 
 var pos: Vector2i:
 	set(value):
 		position = pos / Utility.tileset_size
 	get():
-		return position / Utility.tileset_size
+		if Engine.is_editor_hint(): return position / 120.0
+		return Vector2i(round(position / Utility.tileset_size))
 
 var move_speed := 0.1
 var is_moving := false
@@ -38,3 +40,4 @@ func move(dir: Vector2i):
 func _process(delta):
 	sprites_container.scale = lerp(sprites_container.scale, Vector2(h_orientation, 1.0), delta * 5.0)
 	sprites_container.position.y = sin(min(jump_state, 1.0) * PI) * -20.0
+	debug_label.text = str(pos)

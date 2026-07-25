@@ -1,14 +1,22 @@
 [gd_scene format=3 uid="uid://dd2b5nspgi5bu"]
 
 [ext_resource type="Script" uid="uid://cx2b74pcjljvk" path="res://scripts/entities/grid_entity.gd" id="1_s4wsw"]
-[ext_resource type="Texture2D" uid="uid://bvs6eont6on0c" path="res://sprites/foe.png" id="2_070wo"]
+[ext_resource type="Texture2D" uid="uid://bvs6eont6on0c" path="res://sprites/foes/foe.png" id="2_070wo"]
 
-[node name="GridEntity" type="Node2D" unique_id=521734191 node_paths=PackedStringArray("sprites_container")]
+[node name="GridEntity" type="Node2D" unique_id=521734191 node_paths=PackedStringArray("sprites_container", "debug_label")]
 script = ExtResource("1_s4wsw")
 sprites_container = NodePath("SpritesContainer")
+debug_label = NodePath("DebugLabel")
 
 [node name="SpritesContainer" type="Node2D" parent="." unique_id=870819497]
 
 [node name="Sprite2D" type="Sprite2D" parent="SpritesContainer" unique_id=2042838768]
 position = Vector2(0, -16)
 texture = ExtResource("2_070wo")
+
+[node name="DebugLabel" type="Label" parent="." unique_id=1172130206]
+offset_left = -42.0
+offset_top = -72.0
+offset_right = -2.0
+offset_bottom = -49.0
+text = "0.1"

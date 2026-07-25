@@ -21,7 +21,11 @@ var current_count_down_index := 0
 
 var is_ticking := false
 
+var additional_ticks := 0
+var current_tick := 0
+
 func _ready():
+
 	entities_dict.set(player.pos, player)
 	for f in foes_container.get_children():
 		f = f as Foe
@@ -50,10 +54,14 @@ func move_entity(entity: GridEntity, dir: Vector2i)->bool:
 	entities_dict.erase(entity.pos)
 	entities_dict.set(entity.pos + dir, entity)
 	await entity.move(dir)
+	
 	if entity is Player:
+		print(entities_dict)
 		number_container.close_spells()
-		current_count_down_index = (current_count_down_index + 1) % count_down_length
-		tick()
+		number_container.set_visible(foes.size())
+		if foes.size(): tick()
+		else:
+			player.spell_sprite.set_visible(false)
 	return true
 	
 func remove_entity(entity: GridEntity):
@@ -63,13 +71,11 @@ func remove_entity(entity: GridEntity):
 	entity.queue_free()
 
 func tick():
+
 	is_ticking = true
-	
+	current_count_down_index = (current_count_down_index + 1) % count_down_length
 	update_countdown()
 
-	for p in projectiles: p.tick()
-	
-	print("Update proj")
 	await update_projectiles()
 	
 	var next_spell = number_container.number_controls[(current_count_down_index + 1) % count_down_length].spell_resource
@@ -79,34 +85,44 @@ func tick():
 	
 	var current_spell := number_container.number_controls[current_count_down_index].spell_resource
 	if current_spell:
-		print("Cast spell")
-
 		cast_spell(current_spell, player)
-		print("Update proj c")
-		update_projectiles_collisions()
-		
-	print("Update foes")
-	await update_foes()
-	print("Update proj c 2")
+
+	update_projectiles_collisions()
+	if current_tick >= additional_ticks: await update_foes()
 	update_projectiles_collisions()
 	
+	for f in foes: f.projectiles_whitelist.clear()
+	
+	for p in projectiles: p.tick()
 	var removed_ps : Array[Projectile]
 	for p in projectiles.duplicate():
 		if p.life <= 0:
 			projectiles.erase(p)
 			removed_ps.append(p)
-	
+			
 	is_ticking = false
 	
-	await Utility.sleep(0.2)
-	for p in removed_ps: if p: p.queue_free()
+	for p in removed_ps:
+		if not p: continue
+		if p.free_after_animated_sprite:
+			p.free_after_animated_sprite.animation_finished.connect(func(): p.queue_free())
+		else: p.queue_free()
 	
 
+	if current_tick < additional_ticks:
+		current_tick += 1
+		print("FREE TICK !!")
+		tick()
+	else:
+		additional_ticks = 0
+		current_tick = 0
+	
 func update_foes():
 	var moved = false
 	for f in foes:
-		if not f.will_move(): continue
 		var distance = player.pos - f.pos
+		if distance.length() <= 1.0: player.take_damage(1)
+		if not f.will_move(): continue
 		var dir = Vector2i(sign(distance.x), sign(distance.y))
 		if abs(distance.x) >= abs(distance.y): dir.y = 0
 		else: dir.x = 0
@@ -120,21 +136,17 @@ func update_countdown():
 
 func update_projectiles():
 	for p in projectiles.duplicate():
-		if p.direction != Vector2i.ZERO:
-			var dir = p.direction
-			print(p.move_per_turn)
-			print("BEFORE")
-			for i in p.move_per_turn:
-				if not p: continue;
-				print(i, " ", dir, " ", p.move_speed, " ", p.move_per_turn)
-				await p.move(dir)
-				print("AFTER")
-				update_projectile_collision(p)
-				print("AFTER")
-			
+		await move_projectile(p)
 	await Utility.sleep(0.1)
-	#if projectiles.size(): await Utility.sleep(0.1)
-	#update_projectiles_collisions()
+			
+func move_projectile(p: Projectile):
+	if p.direction != Vector2i.ZERO:
+		var dir = p.direction
+		for i in p.move_per_turn:
+			update_projectile_collision(p)
+			if not p.life: break;
+			await p.move(dir)
+		update_projectile_collision(p)
 	
 func update_projectiles_collisions():
 	for p in projectiles:
@@ -144,11 +156,12 @@ func update_projectile_collision(p: Projectile):
 	if not is_walkable(p.pos):
 		var target_entity = entities_dict.get(p.pos)
 		if target_entity and target_entity is Foe:
+			if target_entity.projectiles_whitelist.has(p): return
+			target_entity.projectiles_whitelist.append(p)
 			target_entity.take_damage(p.damage)
 			if not target_entity.is_alive():
 				remove_entity(target_entity)
-		projectiles.erase(p)
-		p.queue_free()
+		p.life = 0
 	
 
 func cast_spell(sr: SpellResource, caster: GridEntity):
@@ -158,6 +171,8 @@ func cast_spell(sr: SpellResource, caster: GridEntity):
 		p.reparent(projectiles_container)
 		p.position += player.global_position
 		projectiles.append(p)
+		move_projectile(p)
+	await Utility.sleep(0.1)
 		
 func get_projectiles(sr: SpellResource, caster: GridEntity)->Array[Projectile]:
 	var ps : Array[Projectile]
@@ -168,7 +183,7 @@ func get_projectiles(sr: SpellResource, caster: GridEntity)->Array[Projectile]:
 		if caster.direction != Vector2i.ZERO and sc.direction_oriented:
 			p.position = p.position.rotated(atan2(caster.direction.y, caster.direction.x))
 			p.direction = Vector2(p.direction).rotated(atan2(caster.direction.y, caster.direction.x))
-			p.sprite_2d.rotation = atan2(p.direction.y, p.direction.x)
+			p.sprites_container.rotation = atan2(p.direction.y, p.direction.x)
 		ps.append(p)
 	return ps
 

@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://chupafldledxu"]
+
+[ext_resource type="PackedScene" uid="uid://ocjc24qnjll4" path="res://scenes/entities/projectiles/_projectile.tscn" id="1_vqf0x"]
+[ext_resource type="Texture2D" uid="uid://8xa8g5g5ngt4" path="res://sprites/spells/rock-explosion.png" id="2_oa15r"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ellm"]
+atlas = ExtResource("2_oa15r")
+region = Rect2(0, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tmx54"]
+atlas = ExtResource("2_oa15r")
+region = Rect2(200, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ut1sp"]
+atlas = ExtResource("2_oa15r")
+region = Rect2(400, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jaxdh"]
+atlas = ExtResource("2_oa15r")
+region = Rect2(600, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0dk41"]
+atlas = ExtResource("2_oa15r")
+region = Rect2(800, 0, 200, 200)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_y201y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ellm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tmx54")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ut1sp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jaxdh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0dk41")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": 0,
+"name": &"default",
+"speed": 12.0
+}]
+
+[node name="RockExplosion" unique_id=521734191 node_paths=PackedStringArray("free_after_animated_sprite") instance=ExtResource("1_vqf0x")]
+free_after_animated_sprite = NodePath("SpritesContainer/AnimatedSprite2D")
+
+[node name="Sprite2D" parent="SpritesContainer" parent_id_path=PackedInt32Array(870819497) index="0" unique_id=2042838768]
+visible = false
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SpritesContainer" parent_id_path=PackedInt32Array(870819497) index="1" unique_id=1987958923]
+modulate = Color(0.56640625, 0.56640625, 0.56640625, 1)
+sprite_frames = SubResource("SpriteFrames_y201y")
+autoplay = "default"
+frame = 5
+frame_progress = 1.0

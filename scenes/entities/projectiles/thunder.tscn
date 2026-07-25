@@ -2,10 +2,71 @@
 
 [ext_resource type="PackedScene" uid="uid://ocjc24qnjll4" path="res://scenes/entities/projectiles/_projectile.tscn" id="1_judd4"]
 [ext_resource type="Texture2D" uid="uid://bg7fikhd87ui6" path="res://sprites/card-thunder.png" id="2_dgoax"]
+[ext_resource type="Texture2D" uid="uid://dlbfiup0i8wk7" path="res://sprites/spells/thunder.png" id="3_dgoax"]
 
-[node name="Thunder" unique_id=521734191 instance=ExtResource("1_judd4")]
+[sub_resource type="AtlasTexture" id="AtlasTexture_yaquk"]
+atlas = ExtResource("3_dgoax")
+region = Rect2(0, 0, 100, 198)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_niubw"]
+atlas = ExtResource("3_dgoax")
+region = Rect2(100, 0, 100, 198)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n4bv7"]
+atlas = ExtResource("3_dgoax")
+region = Rect2(200, 0, 100, 198)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ke0x"]
+atlas = ExtResource("3_dgoax")
+region = Rect2(300, 0, 100, 198)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mkpmn"]
+atlas = ExtResource("3_dgoax")
+region = Rect2(400, 0, 100, 198)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m3q53"]
+atlas = ExtResource("3_dgoax")
+region = Rect2(500, 0, 100, 198)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_y201y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yaquk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_niubw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n4bv7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ke0x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mkpmn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m3q53")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": 0,
+"name": &"default",
+"speed": 12.0
+}]
+
+[node name="Thunder" unique_id=521734191 node_paths=PackedStringArray("free_after_animated_sprite") instance=ExtResource("1_judd4")]
 life = 0.0
-damage = 1.0
+free_after_animated_sprite = NodePath("SpritesContainer/AnimatedSprite2D")
 
 [node name="Sprite2D" parent="SpritesContainer" parent_id_path=PackedInt32Array(870819497) index="0" unique_id=2042838768]
+visible = false
 texture = ExtResource("2_dgoax")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SpritesContainer" parent_id_path=PackedInt32Array(870819497) index="1" unique_id=1433047898]
+modulate = Color(1, 0.9963379, 0.765625, 1)
+position = Vector2(0, -57)
+sprite_frames = SubResource("SpriteFrames_y201y")
+autoplay = "default"

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bvs6eont6on0c"
-path="res://.godot/imported/foe.png-c9332ca4f40bf9ceef2de09dd8460a10.ctex"
+uid="uid://dlbfiup0i8wk7"
+path="res://.godot/imported/thunder.png-ebfd95a3bc9a81470851924696a4cf64.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/foe.png"
-dest_files=["res://.godot/imported/foe.png-c9332ca4f40bf9ceef2de09dd8460a10.ctex"]
+source_file="res://sprites/spells/thunder.png"
+dest_files=["res://.godot/imported/thunder.png-ebfd95a3bc9a81470851924696a4cf64.ctex"]
 
 [params]
 
