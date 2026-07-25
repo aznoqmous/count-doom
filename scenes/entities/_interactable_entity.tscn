@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://rbsasohrerfq"]
+
+[ext_resource type="PackedScene" uid="uid://dd2b5nspgi5bu" path="res://scenes/entities/_grid_entity.tscn" id="1_rboqo"]
+[ext_resource type="Texture2D" uid="uid://dngjx1p25w4w1" path="res://sprites/objects-terrain (3).png" id="2_1t78u"]
+[ext_resource type="Script" uid="uid://bo4vjgdg2q6r1" path="res://scripts/entities/interactable_entity.gd" id="2_urrr1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_urrr1"]
+atlas = ExtResource("2_1t78u")
+region = Rect2(124.44852, 257.68164, 126.29663, 123.874115)
+
+[node name="InteractableEntity" unique_id=521734191 instance=ExtResource("1_rboqo")]
+script = ExtResource("2_urrr1")
+interact_once = true
+destroyed_on_interact = true
+walkable = true
+
+[node name="Sprite2D" parent="SpritesContainer" parent_id_path=PackedInt32Array(870819497) index="0" unique_id=2042838768]
+texture = SubResource("AtlasTexture_urrr1")

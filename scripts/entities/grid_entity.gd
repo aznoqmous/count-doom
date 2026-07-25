@@ -5,6 +5,7 @@ class_name GridEntity
 @export var direction : Vector2i
 @export var sprites_container: Node2D
 @export var debug_label: Label
+@export var walkable := false
 
 var pos: Vector2i:
 	set(value):
@@ -29,7 +30,7 @@ func move(dir: Vector2i):
 	var t = Utility.tween()
 	t.set_parallel(true)
 	t.set_ease(Tween.EASE_IN_OUT)
-	t.set_trans(Tween.TRANS_QUAD)
+	t.set_trans(Tween.TRANS_LINEAR)
 	t.tween_property(self, "position", pos, move_speed)
 	t.tween_property(self, "jump_state", 1.0, move_speed)
 	await Utility.sleep(move_speed)

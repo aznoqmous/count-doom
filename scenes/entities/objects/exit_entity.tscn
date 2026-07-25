@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://drjkbs5kvysk3"]
+
+[ext_resource type="PackedScene" uid="uid://dd2b5nspgi5bu" path="res://scenes/entities/_grid_entity.tscn" id="1_s4dqs"]
+[ext_resource type="Texture2D" uid="uid://dngjx1p25w4w1" path="res://sprites/objects-terrain (3).png" id="2_aiw5d"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aksr0"]
+atlas = ExtResource("2_aiw5d")
+region = Rect2(0, 136.16132, 126.29663, 123.874115)
+
+[node name="ExitEntity" unique_id=521734191 instance=ExtResource("1_s4dqs")]
+walkable = true
+
+[node name="Sprite2D" parent="SpritesContainer" parent_id_path=PackedInt32Array(870819497) index="0" unique_id=2042838768]
+texture = SubResource("AtlasTexture_aksr0")

@@ -1,55 +1,75 @@
-[gd_scene format=4 uid="uid://31ixsg8wcesh"]
+[gd_scene format=3 uid="uid://31ixsg8wcesh"]
 
 [ext_resource type="Script" uid="uid://cssme21ufunv8" path="res://scripts/main.gd" id="1_0xm2m"]
 [ext_resource type="TileSet" uid="uid://dkla0dyqjbvjj" path="res://tileset.tres" id="2_h2yge"]
 [ext_resource type="Script" uid="uid://ca2u5p05xq1lt" path="res://scripts/entities/player.gd" id="3_1bvp3"]
 [ext_resource type="Texture2D" uid="uid://bbvpyxx2gsr2y" path="res://sprites/player.png" id="3_h2yge"]
 [ext_resource type="Script" uid="uid://dxaqev8o1id3w" path="res://scripts/resources/spell_resource.gd" id="3_kek77"]
-[ext_resource type="Resource" uid="uid://3k10hilqdhf1" path="res://resources/spells/thunder.tres" id="5_4c57u"]
 [ext_resource type="Script" uid="uid://c24puqccwhg40" path="res://scripts/uis/number_container.gd" id="6_5vw27"]
 [ext_resource type="PackedScene" uid="uid://r1lyuaubwhdi" path="res://scenes/uis/number_control.tscn" id="6_7mycd"]
-[ext_resource type="Resource" uid="uid://bsyeu0uampni1" path="res://resources/spells/rock.tres" id="6_vivmo"]
 [ext_resource type="Resource" uid="uid://byirslqc51dbt" path="res://resources/spells/fire_ball.tres" id="7_272bh"]
+[ext_resource type="PackedScene" uid="uid://c4j0rtnlel4v1" path="res://scenes/entities/objects/skull_entity.tscn" id="7_a6jrf"]
+[ext_resource type="TileSet" uid="uid://co4n8ecng1opt" path="res://resources/tileset.tres" id="7_yaehf"]
 [ext_resource type="Texture2D" uid="uid://c8r3kr1dv7eko" path="res://sprites/cards/card-fire.png" id="8_efxa6"]
+[ext_resource type="PackedScene" uid="uid://cxyth1lpkwwu2" path="res://scenes/entities/objects/chest_entity.tscn" id="8_xuqvo"]
+[ext_resource type="PackedScene" uid="uid://cg3w24e06cjr3" path="res://scenes/entities/objects/spell_stand_entity.tscn" id="9_qsp4k"]
 [ext_resource type="Texture2D" uid="uid://bq5gvu3fk5ncb" path="res://sprites/heart.png" id="9_vivmo"]
-[ext_resource type="PackedScene" uid="uid://5cfb3axklie4" path="res://scenes/entities/foes/slime.tscn" id="9_ycdy4"]
 [ext_resource type="FontFile" uid="uid://b0lwjdjdande4" path="res://Gaegu-Bold.ttf" id="10_2cqfq"]
-[ext_resource type="PackedScene" uid="uid://ctfm1h873bc3k" path="res://scenes/entities/foes/spider.tscn" id="11_vivmo"]
+[ext_resource type="PackedScene" uid="uid://bfs1gcr6av76g" path="res://scenes/entities/objects/stone_entity.tscn" id="10_kq58d"]
+[ext_resource type="PackedScene" uid="uid://de0s4tg2x2hoi" path="res://scenes/entities/objects/trap_entity.tscn" id="11_seu75"]
+[ext_resource type="PackedScene" uid="uid://drjkbs5kvysk3" path="res://scenes/entities/objects/exit_entity.tscn" id="12_xuqvo"]
+[ext_resource type="Shader" uid="uid://c7owmrdjhjnps" path="res://shaders/living_entities.gdshader" id="13_getpj"]
+[ext_resource type="PackedScene" uid="uid://cpy4igtc5bfgs" path="res://scenes/pcg/generator.tscn" id="17_074og"]
+[ext_resource type="PackedScene" uid="uid://d01i7siog8vab" path="res://scenes/pcg/graphs/graph_test.tscn" id="18_074og"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0wbid"]
+shader = ExtResource("13_getpj")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/color_ratio = 0.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_yaehf"]
 font = ExtResource("10_2cqfq")
 font_size = 42
 outline_size = 1
 
-[node name="Main" type="Node2D" unique_id=1080260412 node_paths=PackedStringArray("tile_map_layer", "foes_container", "projectiles_container", "player", "number_container")]
+[node name="Main" type="Node2D" unique_id=1080260412 node_paths=PackedStringArray("tile_map_layer", "foes_container", "projectiles_container", "objects_container", "generator", "player", "number_container")]
 script = ExtResource("1_0xm2m")
 tileset = ExtResource("2_h2yge")
 tile_map_layer = NodePath("World/TileMapLayer")
 foes_container = NodePath("World/FoesContainer")
 projectiles_container = NodePath("World/ProjectilesContainer")
+objects_container = NodePath("World/ObjectsContainer")
+generator = NodePath("Generator")
 player = NodePath("World/Player")
-spells = Array[ExtResource("3_kek77")]([ExtResource("7_272bh"), ExtResource("5_4c57u"), ExtResource("6_vivmo")])
-count_down_length = 4
+spells = Array[ExtResource("3_kek77")]([ExtResource("7_272bh")])
 number_container = NodePath("CanvasLayer/NumberContainer")
+skull_scene = ExtResource("7_a6jrf")
+chest_scene = ExtResource("8_xuqvo")
+spell_stand_scene = ExtResource("9_qsp4k")
+stone_scene = ExtResource("10_kq58d")
+trap_scene = ExtResource("11_seu75")
+exit_scene = ExtResource("12_xuqvo")
 
 [node name="World" type="Node2D" parent="." unique_id=349111133]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="World" unique_id=1397225089]
-modulate = Color(0.4392157, 0.3372549, 0.45882353, 1)
+modulate = Color(0.43137255, 0.3137255, 0.45490196, 1)
 position = Vector2(-60, -74)
-tile_map_data = PackedByteArray("AAAAAAAAAQAAAAAAAAABAAAAAQAAAAAAAAACAAAAAQAAAAAAAAADAAAAAQAAAAAAAAAEAAAAAQAAAAAAAAAFAAAAAQAAAAAAAAAHAAAAAQAAAAAAAAAHAAEAAQAAAAAAAAAHAAIAAQAAAAAAAAAAAAEAAQAAAAAAAAABAAEAAQAAAAAAAAACAAEAAQAAAAAAAAADAAEAAQAAAAAAAAAEAAEAAQAAAAAAAAAFAAEAAQAAAAAAAAAEAAIAAQAAAAAAAAAFAAIAAQAAAAAAAAAIAAAAAQAAAAAAAAAIAAEAAQAAAAAAAAAIAAIAAQAAAAAAAAAJAAAAAQAAAAAAAAAJAAEAAQAAAAAAAAAJAAIAAQAAAAAAAAAGAAAAAQAAAAAAAAAAAAIAAQAAAAAAAAABAAIAAQAAAAAAAAACAAIAAQAAAAAAAAADAAIAAQAAAAAAAAAAAP//AQAAAAAAAAABAP//AQAAAAAAAAACAP//AQAAAAAAAAADAP//AQAAAAAAAAAFAP//AQAAAAAAAAAGAAIAAQAAAAAAAAAGAAEAAQAAAAAAAAAGAP//AQAAAAAAAAAHAP//AQAAAAAAAAAIAP//AQAAAAAAAAAJAP//AQAAAAAAAAA=")
-tile_set = ExtResource("2_h2yge")
+tile_set = ExtResource("7_yaehf")
 
 [node name="Player" type="Node2D" parent="World" unique_id=1997000520 node_paths=PackedStringArray("spell_sprite", "hp_label", "sprites_container", "debug_label")]
+z_index = 1
 script = ExtResource("3_1bvp3")
 spell_sprite = NodePath("SpellSprite")
 hp_label = NodePath("HpLabel")
+sprite_material = SubResource("ShaderMaterial_0wbid")
 sprites_container = NodePath("SpritesContainer")
 debug_label = NodePath("DebugLabel")
 
 [node name="SpritesContainer" type="Node2D" parent="World/Player" unique_id=999815704]
 
 [node name="Sprite2D" type="Sprite2D" parent="World/Player/SpritesContainer" unique_id=2119023179]
+material = SubResource("ShaderMaterial_0wbid")
 position = Vector2(0, -44)
 texture = ExtResource("3_h2yge")
 
@@ -67,6 +87,7 @@ scale = Vector2(0.475, 0.475)
 texture = ExtResource("8_efxa6")
 
 [node name="DebugLabel" type="Label" parent="World/Player" unique_id=1838656288]
+visible = false
 offset_left = -55.0
 offset_top = -83.0
 offset_right = -15.0
@@ -90,31 +111,9 @@ horizontal_alignment = 1
 
 [node name="FoesContainer" type="Node2D" parent="World" unique_id=607431775]
 
-[node name="Spider" parent="World/FoesContainer" unique_id=521734191 instance=ExtResource("11_vivmo")]
-position = Vector2(960, -120)
-
-[node name="Slime" parent="World/FoesContainer" unique_id=1103140008 instance=ExtResource("9_ycdy4")]
-position = Vector2(720, 0)
-
-[node name="Slime3" parent="World/FoesContainer" unique_id=2146827196 instance=ExtResource("9_ycdy4")]
-position = Vector2(600, 0)
-
-[node name="Slime4" parent="World/FoesContainer" unique_id=2105491341 instance=ExtResource("9_ycdy4")]
-position = Vector2(600, 120)
-
-[node name="Slime5" parent="World/FoesContainer" unique_id=1728427001 instance=ExtResource("9_ycdy4")]
-position = Vector2(720, 120)
-
-[node name="Slime6" parent="World/FoesContainer" unique_id=978085691 instance=ExtResource("9_ycdy4")]
-position = Vector2(600, -120)
-
-[node name="Slime7" parent="World/FoesContainer" unique_id=389035135 instance=ExtResource("9_ycdy4")]
-position = Vector2(720, -120)
-
-[node name="Slime2" parent="World/FoesContainer" unique_id=2017721515 instance=ExtResource("9_ycdy4")]
-position = Vector2(960, 120)
-
 [node name="ProjectilesContainer" type="Node2D" parent="World" unique_id=345298138]
+
+[node name="ObjectsContainer" type="Node2D" parent="World" unique_id=1256360141]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=530670496]
 
@@ -163,3 +162,10 @@ number = 5
 [node name="NumberControl6" parent="CanvasLayer/NumberContainer/Container" unique_id=1339778139 instance=ExtResource("6_7mycd")]
 layout_mode = 2
 number = 4
+
+[node name="Generator" parent="." unique_id=92561272 node_paths=PackedStringArray("cells_container") instance=ExtResource("17_074og")]
+modulate = Color(0.43137255, 0.3137255, 0.45490196, 1)
+seed = "590098"
+cells_container = NodePath("CellsContainer")
+
+[node name="CellsContainer" parent="Generator" unique_id=937675435 instance=ExtResource("18_074og")]

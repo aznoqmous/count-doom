@@ -1,0 +1,151 @@
+[gd_scene format=3 uid="uid://31ixsg8wcesh"]
+
+[ext_resource type="Script" uid="uid://cssme21ufunv8" path="res://scripts/main.gd" id="1_0xm2m"]
+[ext_resource type="TileSet" uid="uid://dkla0dyqjbvjj" path="res://tileset.tres" id="2_h2yge"]
+[ext_resource type="Script" uid="uid://ca2u5p05xq1lt" path="res://scripts/entities/player.gd" id="3_1bvp3"]
+[ext_resource type="Texture2D" uid="uid://bbvpyxx2gsr2y" path="res://sprites/player.png" id="3_h2yge"]
+[ext_resource type="Script" uid="uid://dxaqev8o1id3w" path="res://scripts/resources/spell_resource.gd" id="3_kek77"]
+[ext_resource type="Resource" uid="uid://3k10hilqdhf1" path="res://resources/spells/thunder.tres" id="5_4c57u"]
+[ext_resource type="Script" uid="uid://c24puqccwhg40" path="res://scripts/uis/number_container.gd" id="6_5vw27"]
+[ext_resource type="PackedScene" uid="uid://r1lyuaubwhdi" path="res://scenes/uis/number_control.tscn" id="6_7mycd"]
+[ext_resource type="Resource" uid="uid://bsyeu0uampni1" path="res://resources/spells/rock.tres" id="6_vivmo"]
+[ext_resource type="Resource" uid="uid://byirslqc51dbt" path="res://resources/spells/fire_ball.tres" id="7_272bh"]
+[ext_resource type="TileSet" uid="uid://co4n8ecng1opt" path="res://resources/tileset.tres" id="7_yaehf"]
+[ext_resource type="Texture2D" uid="uid://c8r3kr1dv7eko" path="res://sprites/cards/card-fire.png" id="8_efxa6"]
+[ext_resource type="Texture2D" uid="uid://bq5gvu3fk5ncb" path="res://sprites/heart.png" id="9_vivmo"]
+[ext_resource type="FontFile" uid="uid://b0lwjdjdande4" path="res://Gaegu-Bold.ttf" id="10_2cqfq"]
+[ext_resource type="PackedScene" uid="uid://cpy4igtc5bfgs" path="res://scenes/pcg/generator.tscn" id="17_074og"]
+[ext_resource type="PackedScene" uid="uid://d01i7siog8vab" path="res://scenes/pcg/graphs/graph_test.tscn" id="18_074og"]
+[ext_resource type="PackedScene" uid="uid://c5oybp8pe874r" path="res://scenes/pcg/rooms/room.tscn" id="19_82xsv"]
+[ext_resource type="PackedScene" uid="uid://b2ui3rbgb37s" path="res://scenes/pcg/rooms/exit_room.tscn" id="19_cegan"]
+[ext_resource type="PackedScene" uid="uid://depgemjgewjo2" path="res://scenes/pcg/rooms/enemy_room.tscn" id="20_getpj"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_yaehf"]
+font = ExtResource("10_2cqfq")
+font_size = 42
+outline_size = 1
+
+[node name="Main" type="Node2D" unique_id=1080260412 node_paths=PackedStringArray("tile_map_layer", "foes_container", "projectiles_container", "generator", "player", "number_container")]
+script = ExtResource("1_0xm2m")
+tileset = ExtResource("2_h2yge")
+tile_map_layer = NodePath("World/TileMapLayer")
+foes_container = NodePath("World/FoesContainer")
+projectiles_container = NodePath("World/ProjectilesContainer")
+generator = NodePath("Generator")
+player = NodePath("World/Player")
+spells = Array[ExtResource("3_kek77")]([ExtResource("7_272bh"), ExtResource("5_4c57u"), ExtResource("6_vivmo")])
+count_down_length = 4
+number_container = NodePath("CanvasLayer/NumberContainer")
+
+[node name="World" type="Node2D" parent="." unique_id=349111133]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="World" unique_id=1397225089]
+position = Vector2(-60, -74)
+tile_set = ExtResource("7_yaehf")
+
+[node name="Player" type="Node2D" parent="World" unique_id=1997000520 node_paths=PackedStringArray("spell_sprite", "hp_label", "sprites_container", "debug_label")]
+script = ExtResource("3_1bvp3")
+spell_sprite = NodePath("SpellSprite")
+hp_label = NodePath("HpLabel")
+sprites_container = NodePath("SpritesContainer")
+debug_label = NodePath("DebugLabel")
+
+[node name="SpritesContainer" type="Node2D" parent="World/Player" unique_id=999815704]
+
+[node name="Sprite2D" type="Sprite2D" parent="World/Player/SpritesContainer" unique_id=2119023179]
+position = Vector2(0, -44)
+texture = ExtResource("3_h2yge")
+
+[node name="Camera2D" type="Camera2D" parent="World/Player" unique_id=1252037715]
+position = Vector2(0, 1)
+zoom = Vector2(0.5, 0.5)
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+
+[node name="SpellSprite" type="Sprite2D" parent="World/Player" unique_id=408308467]
+visible = false
+z_index = 1
+position = Vector2(0, -120)
+scale = Vector2(0.475, 0.475)
+texture = ExtResource("8_efxa6")
+
+[node name="DebugLabel" type="Label" parent="World/Player" unique_id=1838656288]
+offset_left = -55.0
+offset_top = -83.0
+offset_right = -15.0
+offset_bottom = -60.0
+text = "0.1"
+
+[node name="Heart" type="Sprite2D" parent="World/Player" unique_id=611597037]
+modulate = Color(0.5848766, 0.2572178, 0.35274857, 1)
+position = Vector2(29, 13)
+scale = Vector2(0.435, 0.435)
+texture = ExtResource("9_vivmo")
+
+[node name="HpLabel" type="Label" parent="World/Player" unique_id=2113403281]
+offset_left = 12.0
+offset_top = -6.0
+offset_right = 52.0
+offset_bottom = 37.0
+text = "3"
+label_settings = SubResource("LabelSettings_yaehf")
+horizontal_alignment = 1
+
+[node name="FoesContainer" type="Node2D" parent="World" unique_id=607431775]
+
+[node name="ProjectilesContainer" type="Node2D" parent="World" unique_id=345298138]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=530670496]
+
+[node name="NumberContainer" type="Control" parent="CanvasLayer" unique_id=241174823 node_paths=PackedStringArray("container")]
+layout_mode = 3
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 26.0
+offset_bottom = 75.0
+grow_horizontal = 2
+script = ExtResource("6_5vw27")
+container = NodePath("Container")
+
+[node name="Container" type="HBoxContainer" parent="CanvasLayer/NumberContainer" unique_id=169585653]
+z_index = 1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -155.0
+offset_right = 155.0
+offset_bottom = 60.0
+grow_horizontal = 2
+theme_override_constants/separation = -10
+alignment = 1
+
+[node name="NumberControl" parent="CanvasLayer/NumberContainer/Container" unique_id=1673323686 instance=ExtResource("6_7mycd")]
+layout_mode = 2
+
+[node name="NumberControl2" parent="CanvasLayer/NumberContainer/Container" unique_id=1593622192 instance=ExtResource("6_7mycd")]
+layout_mode = 2
+number = 8
+
+[node name="NumberControl3" parent="CanvasLayer/NumberContainer/Container" unique_id=693831946 instance=ExtResource("6_7mycd")]
+layout_mode = 2
+number = 7
+
+[node name="NumberControl4" parent="CanvasLayer/NumberContainer/Container" unique_id=633784828 instance=ExtResource("6_7mycd")]
+layout_mode = 2
+number = 6
+
+[node name="NumberControl5" parent="CanvasLayer/NumberContainer/Container" unique_id=1059075370 instance=ExtResource("6_7mycd")]
+layout_mode = 2
+number = 5
+
+[node name="NumberControl6" parent="CanvasLayer/NumberContainer/Container" unique_id=1339778139 instance=ExtResource("6_7mycd")]
+layout_mode = 2
+number = 4
+
+[node name="Generator" parent="." unique_id=92561272 node_paths=PackedStringArray("cells_container") instance=ExtResource("17_074og")]
+seed = "999464"
+cells_container = NodePath("CellsContainer")
+
+[node name="CellsContainer" parent="Generator" unique_id=937675435 instance=ExtResource("18_074og")]
+packed_rooms = Array[PackedScene]([ExtResource("19_82xsv"), ExtResource("20_getpj"), ExtResource("19_cegan")])

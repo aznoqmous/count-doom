@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://bfs1gcr6av76g"]
+
+[ext_resource type="PackedScene" uid="uid://dd2b5nspgi5bu" path="res://scenes/entities/_grid_entity.tscn" id="1_5pdx2"]
+[ext_resource type="Texture2D" uid="uid://dngjx1p25w4w1" path="res://sprites/objects-terrain (3).png" id="2_vlk4y"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u12bx"]
+atlas = ExtResource("2_vlk4y")
+region = Rect2(125.91263, 4.3923035, 126.29663, 123.874115)
+
+[node name="GridEntity" unique_id=521734191 instance=ExtResource("1_5pdx2")]
+
+[node name="Sprite2D" parent="SpritesContainer" parent_id_path=PackedInt32Array(870819497) index="0" unique_id=2042838768]
+texture = SubResource("AtlasTexture_u12bx")

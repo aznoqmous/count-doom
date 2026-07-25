@@ -2,8 +2,15 @@
 
 [ext_resource type="PackedScene" uid="uid://dd2b5nspgi5bu" path="res://scenes/entities/_grid_entity.tscn" id="1_mlefb"]
 [ext_resource type="Script" uid="uid://ci6rqy34vnssp" path="res://scripts/entities/living_entity.gd" id="2_w7aiv"]
+[ext_resource type="Shader" uid="uid://c7owmrdjhjnps" path="res://shaders/living_entities.gdshader" id="3_0wbid"]
 [ext_resource type="Texture2D" uid="uid://bq5gvu3fk5ncb" path="res://sprites/heart.png" id="3_m7p7w"]
 [ext_resource type="FontFile" uid="uid://b0lwjdjdande4" path="res://Gaegu-Bold.ttf" id="4_0wbid"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m7p7w"]
+resource_local_to_scene = true
+shader = ExtResource("3_0wbid")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/color_ratio = 0.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_dh7nk"]
 font = ExtResource("4_0wbid")
@@ -14,6 +21,10 @@ outline_size = 1
 script = ExtResource("2_w7aiv")
 hp_label = NodePath("HpLabel")
 max_health = 3
+sprite_material = SubResource("ShaderMaterial_m7p7w")
+
+[node name="Sprite2D" parent="SpritesContainer" parent_id_path=PackedInt32Array(870819497) index="0" unique_id=2042838768]
+material = SubResource("ShaderMaterial_m7p7w")
 
 [node name="Heart" type="Sprite2D" parent="." index="2" unique_id=2061746553]
 modulate = Color(0.5848766, 0.2572178, 0.35274857, 1)

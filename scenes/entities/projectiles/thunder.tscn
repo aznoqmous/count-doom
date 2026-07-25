@@ -1,8 +1,12 @@
 [gd_scene format=3 uid="uid://guw7jhgqvnnh"]
 
 [ext_resource type="PackedScene" uid="uid://ocjc24qnjll4" path="res://scenes/entities/projectiles/_projectile.tscn" id="1_judd4"]
-[ext_resource type="Texture2D" uid="uid://bg7fikhd87ui6" path="res://sprites/card-thunder.png" id="2_dgoax"]
+[ext_resource type="Texture2D" uid="uid://86erjdebjpkx" path="res://sprites/bullets.png" id="2_dgoax"]
 [ext_resource type="Texture2D" uid="uid://dlbfiup0i8wk7" path="res://sprites/spells/thunder.png" id="3_dgoax"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tmx54"]
+atlas = ExtResource("2_dgoax")
+region = Rect2(133.5, 17.5, 67, 68)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yaquk"]
 atlas = ExtResource("3_dgoax")
@@ -60,12 +64,13 @@ animations = [{
 [node name="Thunder" unique_id=521734191 node_paths=PackedStringArray("free_after_animated_sprite") instance=ExtResource("1_judd4")]
 life = 0.0
 free_after_animated_sprite = NodePath("SpritesContainer/AnimatedSprite2D")
+free_after_sec = 0.1
 
 [node name="Sprite2D" parent="SpritesContainer" parent_id_path=PackedInt32Array(870819497) index="0" unique_id=2042838768]
-visible = false
-texture = ExtResource("2_dgoax")
+texture = SubResource("AtlasTexture_tmx54")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SpritesContainer" parent_id_path=PackedInt32Array(870819497) index="1" unique_id=1433047898]
+visible = false
 modulate = Color(1, 0.9963379, 0.765625, 1)
 position = Vector2(0, -57)
 sprite_frames = SubResource("SpriteFrames_y201y")

@@ -1,0 +1,80 @@
+[gd_scene format=4 uid="uid://b2ui3rbgb37s"]
+
+[ext_resource type="TileSet" uid="uid://co4n8ecng1opt" path="res://resources/tileset.tres" id="1_g4e56"]
+[ext_resource type="Script" uid="uid://cg8labmywtk54" path="res://scripts/pcg/room.gd" id="2_ofbo2"]
+[ext_resource type="Texture2D" uid="uid://bdqdmo3j3p176" path="res://sprites/pcg/exit.png" id="3_o3uwa"]
+[ext_resource type="Texture2D" uid="uid://e5vqjr17fckh" path="res://sprites/pcg/entrance.png" id="4_nqii5"]
+[ext_resource type="Texture2D" uid="uid://p7k7a8ke33oj" path="res://sprites/pcg/bug.png" id="5_jm8gp"]
+[ext_resource type="Texture2D" uid="uid://y832xrlguiyf" path="res://sprites/pcg/key.png" id="6_dxb38"]
+[ext_resource type="Texture2D" uid="uid://dwm8ir7x3pybo" path="res://sprites/pcg/lock.png" id="7_tss8u"]
+[ext_resource type="Texture2D" uid="uid://dceyqxnglot3w" path="res://sprites/pcg/reward.png" id="8_1fnwf"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_c2wc3"]
+outline_size = 7
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Room" type="TileMapLayer" unique_id=655644961 node_paths=PackedStringArray("background_layer", "state_sprite_container", "label", "exit_sprite", "entrance_sprite", "monster_sprite", "key_sprite", "lock_sprite", "reward_sprite")]
+tile_map_data = PackedByteArray("AAAAAAMAAQAEAAAAAAAGAAMAAQADAAAAAAADAAAAAQAEAAEAAAADAAYAAQADAAEAAAAAAAAAAAAAAAAAAAAAAAEAAQAEAAIAAAAAAAIAAQAEAAIAAAABAAAAAQAEAAMAAAACAAAAAQAEAAMAAAAEAAAAAQAEAAMAAAAFAAAAAQAEAAMAAAAGAAAAAAAAAAAAAAAGAAEAAQADAAIAAAAGAAIAAQADAAIAAAAAAAQAAQAEAAIAAAAAAAUAAQAEAAIAAAAAAAYAAAAAAAAAAAABAAYAAQADAAMAAAACAAYAAQADAAMAAAAEAAYAAQADAAMAAAAFAAYAAQADAAMAAAAGAAYAAAAAAAAAAAAGAAQAAQADAAIAAAAGAAUAAQADAAIAAAADAAMABQAAAAEAAAA=")
+tile_set = ExtResource("1_g4e56")
+script = ExtResource("2_ofbo2")
+is_unique = true
+is_required = true
+background_layer = NodePath("Floor")
+state_sprite_container = NodePath("StateSprite")
+label = NodePath("Label")
+exit_sprite = NodePath("StateSprite/Exit")
+entrance_sprite = NodePath("StateSprite/Entrance")
+monster_sprite = NodePath("StateSprite/Monster")
+key_sprite = NodePath("StateSprite/Key")
+lock_sprite = NodePath("StateSprite/Lock")
+reward_sprite = NodePath("StateSprite/Reward")
+
+[node name="Floor" type="TileMapLayer" parent="." unique_id=1785724511]
+z_index = -1
+tile_map_data = PackedByteArray("AAABAAEAAAACAAEAAAACAAEAAAABAAEAAAADAAEAAAACAAEAAAADAAIAAAACAAAAAAABAAIAAAACAAAAAAACAAIAAAABAAAAAAABAAMAAAACAAEAAAACAAMAAAABAAEAAAADAAMAAAACAAEAAAABAAQAAAACAAAAAAACAAQAAAABAAAAAAADAAQAAAACAAAAAAAEAAQAAAABAAAAAAAEAAMAAAABAAEAAAAEAAIAAAABAAAAAAAEAAEAAAABAAEAAAABAAUAAAACAAEAAAACAAUAAAABAAEAAAADAAUAAAACAAEAAAAFAAEAAAACAAEAAAAFAAIAAAACAAAAAAAFAAMAAAACAAEAAAAFAAQAAAACAAAAAAAFAAUAAAACAAEAAAAEAAUAAAABAAEAAAADAAAAAAACAAAAAAADAAYAAAACAAAAAAAGAAMAAAABAAEAAAAAAAMAAAABAAEAAAAAAAAAAAABAAAAAAAAAAEAAAABAAEAAAABAAAAAAACAAAAAAAAAAIAAAABAAAAAAAAAAQAAAABAAAAAAAAAAUAAAABAAEAAAAAAAYAAAABAAAAAAABAAYAAAACAAAAAAACAAAAAAABAAAAAAACAAYAAAABAAAAAAAEAAAAAAABAAAAAAAFAAAAAAACAAAAAAAEAAYAAAABAAAAAAAFAAYAAAACAAAAAAAGAAAAAAABAAAAAAAGAAEAAAABAAEAAAAGAAIAAAABAAAAAAAGAAQAAAABAAAAAAAGAAUAAAABAAEAAAAGAAYAAAABAAAAAAA=")
+tile_set = ExtResource("1_g4e56")
+
+[node name="StateSprite" type="Node2D" parent="." unique_id=1076585005]
+position = Vector2(64, 64)
+scale = Vector2(2, 2)
+
+[node name="Exit" type="Sprite2D" parent="StateSprite" unique_id=85505255]
+visible = false
+position = Vector2(-1.5, -2)
+texture = ExtResource("3_o3uwa")
+
+[node name="Entrance" type="Sprite2D" parent="StateSprite" unique_id=1986682663]
+visible = false
+position = Vector2(-1.5, -2)
+texture = ExtResource("4_nqii5")
+
+[node name="Monster" type="Sprite2D" parent="StateSprite" unique_id=967729247]
+visible = false
+position = Vector2(-1.5, -2)
+texture = ExtResource("5_jm8gp")
+
+[node name="Key" type="Sprite2D" parent="StateSprite" unique_id=570299454]
+visible = false
+position = Vector2(-1.5, -2)
+texture = ExtResource("6_dxb38")
+
+[node name="Lock" type="Sprite2D" parent="StateSprite" unique_id=25089682]
+visible = false
+position = Vector2(-1.5, -2)
+texture = ExtResource("7_tss8u")
+
+[node name="Reward" type="Sprite2D" parent="StateSprite" unique_id=2015110389]
+visible = false
+position = Vector2(-1.5, -2)
+texture = ExtResource("8_1fnwf")
+
+[node name="Label" type="Label" parent="." unique_id=936146548]
+visible = false
+offset_left = 32.0
+offset_top = 48.0
+offset_right = 80.0
+offset_bottom = 96.0
+text = "1"
+label_settings = SubResource("LabelSettings_c2wc3")
+horizontal_alignment = 1
+vertical_alignment = 1

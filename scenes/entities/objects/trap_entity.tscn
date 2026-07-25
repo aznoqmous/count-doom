@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://de0s4tg2x2hoi"]
+
+[ext_resource type="PackedScene" uid="uid://dd2b5nspgi5bu" path="res://scenes/entities/_grid_entity.tscn" id="1_pqv6h"]
+[ext_resource type="Texture2D" uid="uid://dngjx1p25w4w1" path="res://sprites/objects-terrain (3).png" id="2_dijhm"]
+[ext_resource type="Script" uid="uid://bqdg446enefhn" path="res://scripts/entities/trap_entity.gd" id="2_rdgyq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rdgyq"]
+atlas = ExtResource("2_dijhm")
+region = Rect2(3.0517578e-05, 2.9281921, 126.29663, 123.874115)
+
+[node name="TrapEntity" unique_id=521734191 instance=ExtResource("1_pqv6h")]
+script = ExtResource("2_rdgyq")
+interact_once = true
+destroyed_on_interact = false
+walkable = true
+
+[node name="Sprite2D" parent="SpritesContainer" parent_id_path=PackedInt32Array(870819497) index="0" unique_id=2042838768]
+texture = SubResource("AtlasTexture_rdgyq")

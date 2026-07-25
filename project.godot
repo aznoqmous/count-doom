@@ -54,4 +54,4 @@ MoveDown={
 [rendering]
 
 rendering_device/driver.windows="d3d12"
-environment/defaults/default_clear_color=Color(0.31764707, 0.22745098, 0.33333334, 1)
+environment/defaults/default_clear_color=Color(0.21568015, 0.15310669, 0.2265625, 1)

@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://cpy4igtc5bfgs"]
+
+[ext_resource type="Script" uid="uid://dn46ckotfxsii" path="res://scripts/pcg/generator.gd" id="1_fn663"]
+[ext_resource type="PackedScene" uid="uid://c5oybp8pe874r" path="res://scenes/pcg/rooms/room.tscn" id="2_ctiwn"]
+
+[node name="Generator" type="Node2D" unique_id=92561272 node_paths=PackedStringArray("cells_container", "rooms_container", "seed_label")]
+script = ExtResource("1_fn663")
+cell_size = 120.0
+seed = "341651"
+cells_container = NodePath("")
+rooms_container = NodePath("RoomsContainer")
+seed_label = NodePath("Label")
+cell_snap_size = 32.0
+entrance_rooms = Array[PackedScene]([ExtResource("2_ctiwn")])
+metadata/_edit_lock_ = true
+
+[node name="RoomsContainer" type="Node2D" parent="." unique_id=1297192832]
+metadata/_edit_lock_ = true
+
+[node name="Label" type="Label" parent="." unique_id=1896607432]
+visible = false
+offset_top = -64.0
+offset_right = 105.0
+offset_bottom = -41.0
+text = "Seed : 341651"

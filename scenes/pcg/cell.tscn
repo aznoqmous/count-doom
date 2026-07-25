@@ -1,0 +1,136 @@
+[gd_scene format=3 uid="uid://jweyumwv5u6p"]
+
+[ext_resource type="Script" uid="uid://co8co0e2oowo" path="res://scripts/pcg/cell_node.gd" id="1_0s7o3"]
+[ext_resource type="Texture2D" uid="uid://bdo1n6nx7uqxe" path="res://sprites/pcg/room.png" id="1_upbjj"]
+[ext_resource type="Texture2D" uid="uid://bdqdmo3j3p176" path="res://sprites/pcg/exit.png" id="3_k4tsc"]
+[ext_resource type="Texture2D" uid="uid://e5vqjr17fckh" path="res://sprites/pcg/entrance.png" id="4_ely81"]
+[ext_resource type="Texture2D" uid="uid://p7k7a8ke33oj" path="res://sprites/pcg/bug.png" id="5_brkcj"]
+[ext_resource type="Texture2D" uid="uid://y832xrlguiyf" path="res://sprites/pcg/key.png" id="6_v4toj"]
+[ext_resource type="Texture2D" uid="uid://dwm8ir7x3pybo" path="res://sprites/pcg/lock.png" id="7_k5y1d"]
+[ext_resource type="Texture2D" uid="uid://dceyqxnglot3w" path="res://sprites/pcg/reward.png" id="8_nvha3"]
+[ext_resource type="Texture2D" uid="uid://c21bnjlejwqun" path="res://sprites/pcg/arrow-down.png" id="9_k5y1d"]
+[ext_resource type="Texture2D" uid="uid://e6kfpaukejpy" path="res://sprites/pcg/arrow-left.png" id="10_nvha3"]
+[ext_resource type="Texture2D" uid="uid://drlq0j7x5is57" path="res://sprites/pcg/arrow-right.png" id="11_v22pw"]
+[ext_resource type="Texture2D" uid="uid://3yd2o8yd4xve" path="res://sprites/pcg/arrow-up.png" id="12_4ptra"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_y201y"]
+font_size = 10
+
+[node name="Cell" type="Node2D" unique_id=615949645 node_paths=PackedStringArray("sprite", "state_sprite_container", "rooms_container", "repeat_label", "exit_sprite", "entrance_sprite", "monster_sprite", "key_sprite", "lock_sprite", "reward_sprite", "left_sprite", "top_sprite", "right_sprite", "bottom_sprite", "generation_state_sprite")]
+script = ExtResource("1_0s7o3")
+sprite = NodePath("RoomSprite")
+state_sprite_container = NodePath("StateSprite")
+rooms_container = NodePath("RoomsContainer")
+repeat_label = NodePath("RepeatLabel")
+exit_sprite = NodePath("StateSprite/Exit")
+entrance_sprite = NodePath("StateSprite/Entrance")
+monster_sprite = NodePath("StateSprite/Monster")
+key_sprite = NodePath("StateSprite/Key")
+lock_sprite = NodePath("StateSprite/Lock")
+reward_sprite = NodePath("StateSprite/Reward")
+left_sprite = NodePath("DirectionsSprites/Left")
+top_sprite = NodePath("DirectionsSprites/Top")
+right_sprite = NodePath("DirectionsSprites/Right")
+bottom_sprite = NodePath("DirectionsSprites/Bottom")
+generation_state_sprite = NodePath("GenerationStateSprite")
+
+[node name="RoomSprite" type="Sprite2D" parent="." unique_id=1709461331]
+modulate = Color(0.28326416, 0.38447094, 0.609375, 1)
+texture_filter = 1
+texture = ExtResource("1_upbjj")
+
+[node name="GenerationStateSprite" type="Sprite2D" parent="." unique_id=1507090981]
+position = Vector2(10, -11)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_upbjj")
+
+[node name="Label" type="Label" parent="." unique_id=1556221402]
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -27.5
+offset_top = -32.0
+offset_right = 27.5
+offset_bottom = -9.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Cell 0 2"
+
+[node name="StateSprite" type="Node2D" parent="." unique_id=2126956410]
+texture_filter = 1
+position = Vector2(-7, -7)
+scale = Vector2(0.3, 0.3)
+
+[node name="Exit" type="Sprite2D" parent="StateSprite" unique_id=1428886636]
+visible = false
+position = Vector2(-1.5, -2)
+texture = ExtResource("3_k4tsc")
+
+[node name="Entrance" type="Sprite2D" parent="StateSprite" unique_id=980045673]
+visible = false
+position = Vector2(-1.5, -2)
+texture = ExtResource("4_ely81")
+
+[node name="Monster" type="Sprite2D" parent="StateSprite" unique_id=333531785]
+visible = false
+position = Vector2(-1.5, -2)
+texture = ExtResource("5_brkcj")
+
+[node name="Key" type="Sprite2D" parent="StateSprite" unique_id=1743898620]
+visible = false
+position = Vector2(-1.5, -2)
+texture = ExtResource("6_v4toj")
+
+[node name="Lock" type="Sprite2D" parent="StateSprite" unique_id=1193155848]
+visible = false
+position = Vector2(-1.5, -2)
+texture = ExtResource("7_k5y1d")
+
+[node name="Reward" type="Sprite2D" parent="StateSprite" unique_id=308647435]
+visible = false
+position = Vector2(-1.5, -2)
+texture = ExtResource("8_nvha3")
+
+[node name="DirectionsSprites" type="Node2D" parent="." unique_id=2068017457]
+z_index = 1
+
+[node name="Left" type="Sprite2D" parent="DirectionsSprites" unique_id=1716411884]
+visible = false
+position = Vector2(-10, 0)
+scale = Vector2(0.02, 0.02)
+texture = ExtResource("11_v22pw")
+
+[node name="Top" type="Sprite2D" parent="DirectionsSprites" unique_id=2080099463]
+visible = false
+position = Vector2(0, 10)
+scale = Vector2(0.02, 0.02)
+texture = ExtResource("12_4ptra")
+
+[node name="Right" type="Sprite2D" parent="DirectionsSprites" unique_id=820760921]
+visible = false
+position = Vector2(10, 0)
+scale = Vector2(0.02, 0.02)
+texture = ExtResource("10_nvha3")
+
+[node name="Bottom" type="Sprite2D" parent="DirectionsSprites" unique_id=176192011]
+visible = false
+position = Vector2(0, -10)
+scale = Vector2(0.02, 0.02)
+texture = ExtResource("9_k5y1d")
+
+[node name="RoomsContainer" type="Node2D" parent="." unique_id=2076483121]
+z_index = 1
+scale = Vector2(0.02, 0.02)
+
+[node name="RepeatLabel" type="Label" parent="." unique_id=1951644223]
+visible = false
+texture_filter = 1
+offset_left = -11.0
+offset_top = -1.0
+offset_right = 29.0
+offset_bottom = 22.0
+text = "x5"
+label_settings = SubResource("LabelSettings_y201y")

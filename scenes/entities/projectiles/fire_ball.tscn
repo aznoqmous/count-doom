@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://ocjc24qnjll4" path="res://scenes/entities/projectiles/_projectile.tscn" id="1_qdnx5"]
 [ext_resource type="Texture2D" uid="uid://b66tqpgn7bo0d" path="res://sprites/spells/fire-ball.png" id="2_nh25g"]
+[ext_resource type="Texture2D" uid="uid://bu5rd5g2q3vv5" path="res://resources/projectiles_atlas_texture.tres" id="2_wo12e"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wo12e"]
 atlas = ExtResource("2_nh25g")
@@ -82,9 +83,10 @@ move_per_turn = 2.0
 direction = Vector2i(1, 0)
 
 [node name="Sprite2D" parent="SpritesContainer" parent_id_path=PackedInt32Array(870819497) index="0" unique_id=2042838768]
-visible = false
+texture = ExtResource("2_wo12e")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SpritesContainer" parent_id_path=PackedInt32Array(870819497) index="1" unique_id=540966333]
+visible = false
 modulate = Color(1, 0.5854187, 0.18359375, 1)
 position = Vector2(0, -18)
 sprite_frames = SubResource("SpriteFrames_y201y")

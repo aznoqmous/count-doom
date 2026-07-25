@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://cxyth1lpkwwu2"]
+
+[ext_resource type="PackedScene" uid="uid://rbsasohrerfq" path="res://scenes/entities/_interactable_entity.tscn" id="1_ccxxn"]
+[ext_resource type="Script" uid="uid://dow6q87nlr1oh" path="res://scripts/entities/chest_entity.gd" id="2_q7fot"]
+
+[node name="ChestEntity" unique_id=521734191 instance=ExtResource("1_ccxxn")]
+script = ExtResource("2_q7fot")

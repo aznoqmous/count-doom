@@ -2,7 +2,14 @@
 
 [ext_resource type="PackedScene" uid="uid://bn1cka2e8ouq8" path="res://scenes/entities/_living_entity.tscn" id="1_8junv"]
 [ext_resource type="Script" uid="uid://ds6xa1rovlw4r" path="res://scripts/entities/foe.gd" id="2_bvyoq"]
+[ext_resource type="Shader" uid="uid://c7owmrdjhjnps" path="res://shaders/living_entities.gdshader" id="3_bvyoq"]
 [ext_resource type="Texture2D" uid="uid://bdqg5lq0m4fv7" path="res://sprites/exclamation.png" id="3_qb3c4"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bvyoq"]
+resource_local_to_scene = true
+shader = ExtResource("3_bvyoq")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/color_ratio = 0.0
 
 [node name="Foe" unique_id=521734191 node_paths=PackedStringArray("exclamation_sprite") instance=ExtResource("1_8junv")]
 script = ExtResource("2_bvyoq")
@@ -10,6 +17,7 @@ move_each = 3
 exclamation_sprite = NodePath("Exclamation")
 
 [node name="Sprite2D" parent="SpritesContainer" parent_id_path=PackedInt32Array(870819497) index="0" unique_id=2042838768]
+material = SubResource("ShaderMaterial_bvyoq")
 flip_h = true
 
 [node name="Exclamation" type="Sprite2D" parent="." index="4" unique_id=1383838481]
