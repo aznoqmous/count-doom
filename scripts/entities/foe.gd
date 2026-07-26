@@ -13,9 +13,13 @@ func _ready():
 
 func _process(delta):
 	super(delta)
-	exclamation_sprite.set_visible(not (current_move_attempt + 1) % move_each and is_active)
+	#exclamation_sprite.set_visible(not (current_move_attempt + 1) % move_each and is_active)
 	modulate = Color.WHITE if is_active else Color.DIM_GRAY
 	
 func will_move():
 	current_move_attempt += 1
 	return not current_move_attempt % move_each
+
+func update_exclamation_sprite(count):
+	var state = ((current_move_attempt) % move_each + count) > move_each
+	exclamation_sprite.set_visible(state and is_active and is_alive())

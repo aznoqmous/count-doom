@@ -76,13 +76,14 @@ animations = [{
 }]
 
 [node name="FireBall" unique_id=521734191 instance=ExtResource("1_qdnx5")]
-position_oriented = true
 life = 3.0
-damage = 2.0
 move_per_turn = 2.0
+free_after_animation = false
+movement_oriented = true
 direction = Vector2i(1, 0)
 
 [node name="Sprite2D" parent="SpritesContainer" parent_id_path=PackedInt32Array(870819497) index="0" unique_id=2042838768]
+position = Vector2(0, 0)
 texture = ExtResource("2_wo12e")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SpritesContainer" parent_id_path=PackedInt32Array(870819497) index="1" unique_id=540966333]

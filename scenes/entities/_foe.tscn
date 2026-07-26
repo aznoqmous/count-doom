@@ -15,10 +15,15 @@ shader_parameter/color_ratio = 0.0
 script = ExtResource("2_bvyoq")
 move_each = 3
 exclamation_sprite = NodePath("Exclamation")
+sprite_material = SubResource("ShaderMaterial_bvyoq")
 
 [node name="Sprite2D" parent="SpritesContainer" parent_id_path=PackedInt32Array(870819497) index="0" unique_id=2042838768]
 material = SubResource("ShaderMaterial_bvyoq")
 flip_h = true
+
+[node name="DebugLabel" parent="." index="1" unique_id=1172130206]
+modulate = Color(1, 1, 1, 0)
+top_level = true
 
 [node name="Exclamation" type="Sprite2D" parent="." index="4" unique_id=1383838481]
 modulate = Color(0.94140625, 0.36434674, 0.051483154, 1)

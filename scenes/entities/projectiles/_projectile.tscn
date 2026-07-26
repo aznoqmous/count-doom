@@ -3,18 +3,29 @@
 [ext_resource type="PackedScene" uid="uid://dd2b5nspgi5bu" path="res://scenes/entities/_grid_entity.tscn" id="1_3dneh"]
 [ext_resource type="Script" uid="uid://5msr4obcnnuo" path="res://scripts/spells/projectile.gd" id="2_wcg17"]
 [ext_resource type="Texture2D" uid="uid://dfkdnlvye3whp" path="res://sprites/spells/fireball.png" id="3_g31j8"]
+[ext_resource type="Texture2D" uid="uid://boogmowyav7lr" path="res://sprites/particle.png" id="3_q7cs5"]
 
-[node name="Projectile" unique_id=521734191 instance=ExtResource("1_3dneh")]
+[node name="Projectile" unique_id=521734191 node_paths=PackedStringArray("animation_player", "sprite2d") instance=ExtResource("1_3dneh")]
 script = ExtResource("2_wcg17")
 position_oriented = false
 life = 1.0
 damage = 1.0
 move_per_turn = 0.0
-queue_after = null
+free_after_sec = 0.0
+free_after_animation = null
+animation_player = NodePath("AnimationPlayer")
+sprite2d = NodePath("SpritesContainer/Sprite2D")
 movement_oriented = false
+
+[node name="ShadowSprite2D" type="Sprite2D" parent="." index="0" unique_id=1181486141]
+modulate = Color(0, 0, 0, 0.39215687)
+scale = Vector2(0.68907565, 0.31304348)
+texture = ExtResource("3_q7cs5")
 
 [node name="Sprite2D" parent="SpritesContainer" parent_id_path=PackedInt32Array(870819497) index="0" unique_id=2042838768]
 texture = ExtResource("3_g31j8")
 
-[node name="DebugLabel" parent="." index="1" unique_id=1172130206]
+[node name="DebugLabel" parent="." index="2" unique_id=1172130206]
 text = "(0, 0)"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="3" unique_id=190183511]

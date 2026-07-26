@@ -20,6 +20,7 @@ var str_id: String
 
 @export var variations: Array[TileMapLayer]
 @export var foes: Array[PackedScene]
+@export var max_foes := -1
 var foe_instances: Array[Foe] 
 var traps: Array[Vector2i]
 var rocks: Array[Vector2i]

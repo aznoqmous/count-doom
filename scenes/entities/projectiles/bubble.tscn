@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://dqwaaa3iqjghv"]
+
+[ext_resource type="PackedScene" uid="uid://ocjc24qnjll4" path="res://scenes/entities/projectiles/_projectile.tscn" id="1_cwa2y"]
+[ext_resource type="Texture2D" uid="uid://86erjdebjpkx" path="res://sprites/bullets.png" id="3_lyhw5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tmx54"]
+atlas = ExtResource("3_lyhw5")
+region = Rect2(133.5, 17.5, 67, 68)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yaquk"]
+
+[node name="Bubble" unique_id=521734191 instance=ExtResource("1_cwa2y")]
+position_oriented = true
+life = 5.0
+move_per_turn = 1.0
+free_after_animation = false
+movement_oriented = true
+direction = Vector2i(1, 0)
+
+[node name="Sprite2D" parent="SpritesContainer" parent_id_path=PackedInt32Array(870819497) index="0" unique_id=2042838768]
+texture = SubResource("AtlasTexture_tmx54")
+
+[node name="AnimationPlayer" parent="." index="3" unique_id=190183511]
+libraries/ = SubResource("AnimationLibrary_yaquk")

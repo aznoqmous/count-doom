@@ -2,76 +2,112 @@
 
 [ext_resource type="PackedScene" uid="uid://ocjc24qnjll4" path="res://scenes/entities/projectiles/_projectile.tscn" id="1_judd4"]
 [ext_resource type="Texture2D" uid="uid://86erjdebjpkx" path="res://sprites/bullets.png" id="2_dgoax"]
-[ext_resource type="Texture2D" uid="uid://dlbfiup0i8wk7" path="res://sprites/spells/thunder.png" id="3_dgoax"]
+[ext_resource type="Shader" uid="uid://c7owmrdjhjnps" path="res://shaders/living_entities.gdshader" id="2_yaquk"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y201y"]
+shader = ExtResource("2_yaquk")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/color_ratio = 1.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tmx54"]
 atlas = ExtResource("2_dgoax")
 region = Rect2(133.5, 17.5, 67, 68)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_yaquk"]
-atlas = ExtResource("3_dgoax")
-region = Rect2(0, 0, 100, 198)
+[sub_resource type="Animation" id="Animation_yaquk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpritesContainer/Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpritesContainer/Sprite2D:material:shader_parameter/color_ratio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ShadowSprite2D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.68907565, 0.31304348)]
+}
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_niubw"]
-atlas = ExtResource("3_dgoax")
-region = Rect2(100, 0, 100, 198)
+[sub_resource type="Animation" id="Animation_dgoax"]
+resource_name = "play"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpritesContainer/Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1), Vector2(1, 1), Vector2(1e-05, 1e-05)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpritesContainer/Sprite2D:material:shader_parameter/color_ratio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ShadowSprite2D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.68907565, 0.31304348), Vector2(1e-05, 1e-05)]
+}
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_n4bv7"]
-atlas = ExtResource("3_dgoax")
-region = Rect2(200, 0, 100, 198)
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yaquk"]
+_data = {
+&"RESET": SubResource("Animation_yaquk"),
+&"play": SubResource("Animation_dgoax")
+}
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1ke0x"]
-atlas = ExtResource("3_dgoax")
-region = Rect2(300, 0, 100, 198)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_mkpmn"]
-atlas = ExtResource("3_dgoax")
-region = Rect2(400, 0, 100, 198)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_m3q53"]
-atlas = ExtResource("3_dgoax")
-region = Rect2(500, 0, 100, 198)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_y201y"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_yaquk")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_niubw")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_n4bv7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1ke0x")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_mkpmn")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_m3q53")
-}, {
-"duration": 1.0,
-"texture": null
-}],
-"loop": 0,
-"name": &"default",
-"speed": 12.0
-}]
-
-[node name="Thunder" unique_id=521734191 node_paths=PackedStringArray("free_after_animated_sprite") instance=ExtResource("1_judd4")]
+[node name="Thunder" unique_id=521734191 instance=ExtResource("1_judd4")]
 life = 0.0
-free_after_animated_sprite = NodePath("SpritesContainer/AnimatedSprite2D")
 free_after_sec = 0.1
+free_after_animation = true
 
 [node name="Sprite2D" parent="SpritesContainer" parent_id_path=PackedInt32Array(870819497) index="0" unique_id=2042838768]
+material = SubResource("ShaderMaterial_y201y")
+scale = Vector2(1e-05, 1)
 texture = SubResource("AtlasTexture_tmx54")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SpritesContainer" parent_id_path=PackedInt32Array(870819497) index="1" unique_id=1433047898]
-visible = false
-modulate = Color(1, 0.9963379, 0.765625, 1)
-position = Vector2(0, -57)
-sprite_frames = SubResource("SpriteFrames_y201y")
-autoplay = "default"
+[node name="AnimationPlayer" parent="." index="3" unique_id=190183511]
+libraries/ = SubResource("AnimationLibrary_yaquk")
+autoplay = &"play"

@@ -15,9 +15,14 @@ func _ready():
 	update_health()
 
 var current_color_ratio = 0.0
+var animation_delta := 0.0
 func _process(delta):
+	super(delta)
 	current_color_ratio = lerp(current_color_ratio, 0.0, delta * 5.0)
 	sprite_material.set_shader_parameter("color_ratio", current_color_ratio)
+	if not is_moving:
+		animation_delta += delta
+		sprites_container.scale.y = 1.0 + sin(animation_delta * TAU) / 10.0
 	pass
 
 func take_damage(value):

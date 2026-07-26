@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://ca7eknk56bmcv"]
+
+[ext_resource type="PackedScene" uid="uid://dqq25gsycls3i" path="res://scenes/entities/spell_casts/_spell_cast.tscn" id="1_m4v06"]
+[ext_resource type="PackedScene" uid="uid://dqwaaa3iqjghv" path="res://scenes/entities/projectiles/bubble.tscn" id="2_dtqw7"]
+
+[node name="BubbleCast" unique_id=329227150 instance=ExtResource("1_m4v06")]
+
+[node name="Bubble" parent="." index="0" unique_id=521734191 instance=ExtResource("2_dtqw7")]
+position = Vector2(-120, -120)
+
+[node name="Bubble2" parent="." index="1" unique_id=1827364748 instance=ExtResource("2_dtqw7")]
+position = Vector2(120, 120)
+
+[node name="Bubble3" parent="." index="2" unique_id=1848018538 instance=ExtResource("2_dtqw7")]
+position = Vector2(120, -120)
+
+[node name="Bubble4" parent="." index="3" unique_id=95967482 instance=ExtResource("2_dtqw7")]
+position = Vector2(-120, 120)

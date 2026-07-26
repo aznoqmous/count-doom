@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://d2pvbiq7gfxg0"]
+
+[ext_resource type="Script" uid="uid://cufc42rh40xk" path="res://scripts/pcg/cells_container.gd" id="1_qbjdr"]
+[ext_resource type="PackedScene" uid="uid://c4tnl71jeadjo" path="res://scenes/pcg/rooms/chest_room.tscn" id="2_j7gbb"]
+[ext_resource type="PackedScene" uid="uid://c5oybp8pe874r" path="res://scenes/pcg/rooms/entrance.tscn" id="3_lcyty"]
+[ext_resource type="PackedScene" uid="uid://b2ui3rbgb37s" path="res://scenes/pcg/rooms/exit_room.tscn" id="4_hhs25"]
+[ext_resource type="PackedScene" uid="uid://bguw2oinkrjpm" path="res://scenes/pcg/rooms/room7x7.tscn" id="5_nh8py"]
+[ext_resource type="PackedScene" uid="uid://b5oixeewe3ojs" path="res://scenes/pcg/rooms/spell_room.tscn" id="6_bev1y"]
+[ext_resource type="PackedScene" uid="uid://3rvwkwo8gr4i" path="res://scenes/pcg/rooms/empty-room7x7.tscn" id="7_nhppo"]
+[ext_resource type="PackedScene" uid="uid://jweyumwv5u6p" path="res://scenes/pcg/cell.tscn" id="8_m8ciy"]
+[ext_resource type="PackedScene" uid="uid://c4a57ujwlt74q" path="res://scenes/pcg/rooms/skeleton-room7x7.tscn" id="9_j7gbb"]
+[ext_resource type="PackedScene" uid="uid://cb055k7o5o1ss" path="res://scenes/pcg/rooms/boss-room.tscn" id="9_lcyty"]
+
+[node name="CellsContainer" type="Node2D" unique_id=937675435]
+z_index = 10
+script = ExtResource("1_qbjdr")
+packed_rooms = Array[PackedScene]([ExtResource("2_j7gbb"), ExtResource("3_lcyty"), ExtResource("4_hhs25"), ExtResource("5_nh8py"), ExtResource("6_bev1y"), ExtResource("7_nhppo"), ExtResource("9_j7gbb"), ExtResource("9_lcyty")])
+metadata/_edit_lock_ = true
+
+[node name="Cell 0" parent="." unique_id=615949645 node_paths=PackedStringArray("next") instance=ExtResource("8_m8ciy")]
+cell_type = 1
+required_rooms = Array[PackedScene]([ExtResource("3_lcyty")])
+next = NodePath("../Cell 1")
+
+[node name="Cell 1" parent="." unique_id=1862645618 node_paths=PackedStringArray("parent") instance=ExtResource("8_m8ciy")]
+position = Vector2(32, 0)
+required_rooms = Array[PackedScene]([ExtResource("9_j7gbb")])
+parent = NodePath("../Cell 0")
+
+[node name="Cell 2" parent="." unique_id=1989887084 node_paths=PackedStringArray("parent") instance=ExtResource("8_m8ciy")]
+position = Vector2(64, 0)
+required_rooms = Array[PackedScene]([ExtResource("5_nh8py")])
+parent = NodePath("../Cell 0")
+
+[node name="Cell 3" parent="." unique_id=2029238168 node_paths=PackedStringArray("parent") instance=ExtResource("8_m8ciy")]
+position = Vector2(128, 0)
+required_rooms = Array[PackedScene]([ExtResource("9_lcyty")])
+parent = NodePath("../Cell 0")
+
+[node name="Cell 4" parent="." unique_id=1683173913 node_paths=PackedStringArray("parent") instance=ExtResource("8_m8ciy")]
+position = Vector2(64, 32)
+required_rooms = Array[PackedScene]([ExtResource("9_j7gbb")])
+parent = NodePath("../Cell 0")
+
+[node name="Cell 8" parent="." unique_id=1442267021 instance=ExtResource("8_m8ciy")]
+position = Vector2(160, 0)
+required_rooms = Array[PackedScene]([ExtResource("4_hhs25")])
+
+[node name="Cell 7" parent="." unique_id=361917791 instance=ExtResource("8_m8ciy")]
+position = Vector2(64, 64)
+required_rooms = Array[PackedScene]([ExtResource("6_bev1y")])
+
+[node name="Cell 9" parent="." unique_id=672421470 instance=ExtResource("8_m8ciy")]
+position = Vector2(96, 0)
+required_rooms = Array[PackedScene]([ExtResource("6_bev1y")])

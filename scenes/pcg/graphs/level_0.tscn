@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://bjqstc53kj4aw"]
+
+[ext_resource type="Script" uid="uid://cufc42rh40xk" path="res://scripts/pcg/cells_container.gd" id="1_y3m6p"]
+[ext_resource type="PackedScene" uid="uid://c4tnl71jeadjo" path="res://scenes/pcg/rooms/chest_room.tscn" id="2_c26n7"]
+[ext_resource type="PackedScene" uid="uid://c5oybp8pe874r" path="res://scenes/pcg/rooms/entrance.tscn" id="3_2d3e3"]
+[ext_resource type="PackedScene" uid="uid://b2ui3rbgb37s" path="res://scenes/pcg/rooms/exit_room.tscn" id="4_lr2my"]
+[ext_resource type="PackedScene" uid="uid://b5oixeewe3ojs" path="res://scenes/pcg/rooms/spell_room.tscn" id="6_jxgm1"]
+[ext_resource type="PackedScene" uid="uid://3rvwkwo8gr4i" path="res://scenes/pcg/rooms/empty-room7x7.tscn" id="7_panht"]
+[ext_resource type="PackedScene" uid="uid://difxvn2nbadlr" path="res://scenes/pcg/rooms/slime-room7x7.tscn" id="7_y3m6p"]
+[ext_resource type="PackedScene" uid="uid://jweyumwv5u6p" path="res://scenes/pcg/cell.tscn" id="8_tp60j"]
+
+[node name="CellsContainer" type="Node2D" unique_id=937675435]
+z_index = 10
+script = ExtResource("1_y3m6p")
+packed_rooms = Array[PackedScene]([ExtResource("2_c26n7"), ExtResource("3_2d3e3"), ExtResource("4_lr2my"), ExtResource("6_jxgm1"), ExtResource("7_panht"), ExtResource("7_y3m6p")])
+metadata/_edit_lock_ = true
+
+[node name="Cell 0" parent="." unique_id=615949645 node_paths=PackedStringArray("next") instance=ExtResource("8_tp60j")]
+cell_type = 1
+required_rooms = Array[PackedScene]([ExtResource("3_2d3e3")])
+next = NodePath("../Cell 1")
+
+[node name="Cell 1" parent="." unique_id=1862645618 node_paths=PackedStringArray("parent") instance=ExtResource("8_tp60j")]
+position = Vector2(64, 0)
+required_rooms = Array[PackedScene]([ExtResource("7_y3m6p")])
+parent = NodePath("../Cell 0")
+
+[node name="Cell 8" parent="." unique_id=1442267021 instance=ExtResource("8_tp60j")]
+position = Vector2(96, 0)
+required_rooms = Array[PackedScene]([ExtResource("4_lr2my")])
+
+[node name="Cell 9" parent="." unique_id=672421470 instance=ExtResource("8_tp60j")]
+position = Vector2(32, 0)
+allowed_directions = Array[int]([0])
+required_rooms = Array[PackedScene]([ExtResource("6_jxgm1")])

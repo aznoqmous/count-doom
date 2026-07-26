@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" uid="uid://dxaqev8o1id3w" path="res://scripts/resources/spell_resource.gd" id="1_sdgwj"]
 [ext_resource type="PackedScene" uid="uid://b6voc2nhcqukt" path="res://scenes/entities/spell_casts/rock_cast.tscn" id="2_sdgwj"]
-[ext_resource type="Texture2D" uid="uid://dqwqeir26r5qm" path="res://sprites/tile.png" id="3_uhfna"]
+[ext_resource type="Texture2D" uid="uid://c7gixcmkrjf3n" path="res://sprites/cards/rocks.png" id="3_sdgwj"]
 
 [resource]
 script = ExtResource("1_sdgwj")
 name = "Rock"
-texture = ExtResource("3_uhfna")
+texture = ExtResource("3_sdgwj")
 spell_cast = ExtResource("2_sdgwj")
 metadata/_custom_type_script = "uid://dxaqev8o1id3w"

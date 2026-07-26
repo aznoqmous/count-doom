@@ -1,11 +1,20 @@
 [gd_scene format=3 uid="uid://mxcyo6e0uvc4"]
 
 [ext_resource type="PackedScene" uid="uid://8s5bgj71rnc3" path="res://scenes/entities/_foe.tscn" id="1_wu48q"]
+[ext_resource type="Shader" uid="uid://c7owmrdjhjnps" path="res://shaders/living_entities.gdshader" id="2_17vd4"]
 [ext_resource type="Texture2D" uid="uid://cskinq0ch5fgh" path="res://sprites/foes/skull.png" id="2_ssvhr"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qybfp"]
+resource_local_to_scene = true
+shader = ExtResource("2_17vd4")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/color_ratio = 0.0
+
 [node name="Skeleton" unique_id=521734191 instance=ExtResource("1_wu48q")]
+sprite_material = SubResource("ShaderMaterial_qybfp")
 
 [node name="Sprite2D" parent="SpritesContainer" parent_id_path=PackedInt32Array(870819497) index="0" unique_id=2042838768]
+material = SubResource("ShaderMaterial_qybfp")
 position = Vector2(24, -45)
 texture = ExtResource("2_ssvhr")
 

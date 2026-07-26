@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cpy4igtc5bfgs"]
 
 [ext_resource type="Script" uid="uid://dn46ckotfxsii" path="res://scripts/pcg/generator.gd" id="1_fn663"]
-[ext_resource type="PackedScene" uid="uid://c5oybp8pe874r" path="res://scenes/pcg/rooms/room.tscn" id="2_ctiwn"]
+[ext_resource type="PackedScene" uid="uid://c5oybp8pe874r" path="res://scenes/pcg/rooms/entrance.tscn" id="2_ctiwn"]
 
 [node name="Generator" type="Node2D" unique_id=92561272 node_paths=PackedStringArray("cells_container", "rooms_container", "seed_label")]
 script = ExtResource("1_fn663")

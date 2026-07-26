@@ -1,0 +1,20 @@
+[gd_resource type="Theme" format=3 uid="uid://klqjr2rljrfl"]
+
+[ext_resource type="FontFile" uid="uid://b0lwjdjdande4" path="res://Gaegu-Bold.ttf" id="1_88n7d"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1u8w0"]
+bg_color = Color(0.52226657, 0.33584595, 0.5546875, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[resource]
+default_font = ExtResource("1_88n7d")
+default_font_size = 25
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/styles/disabled = SubResource("StyleBoxFlat_1u8w0")
+Button/styles/focus = SubResource("StyleBoxFlat_1u8w0")
+Button/styles/hover = SubResource("StyleBoxFlat_1u8w0")
+Button/styles/normal = SubResource("StyleBoxFlat_1u8w0")
+Button/styles/pressed = SubResource("StyleBoxFlat_1u8w0")

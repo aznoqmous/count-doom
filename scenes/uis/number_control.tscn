@@ -15,6 +15,7 @@ font_size = 40
 [node name="NumberControl" type="VBoxContainer" unique_id=286489762 node_paths=PackedStringArray("number_label", "label_control", "spell_container", "spell_selection_container", "available_spells_container", "clear_spell_container")]
 offset_right = 60.0
 offset_bottom = 52.0
+mouse_default_cursor_shape = 2
 theme_override_constants/separation = -8
 script = ExtResource("1_nxknd")
 number_label = NodePath("LabelControl/Label")

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="SpellResource" format=3 uid="uid://bw8ouslyovyif"]
+
+[ext_resource type="Script" uid="uid://dxaqev8o1id3w" path="res://scripts/resources/spell_resource.gd" id="1_l62is"]
+[ext_resource type="PackedScene" uid="uid://ca7eknk56bmcv" path="res://scenes/entities/spell_casts/bubble_cast.tscn" id="2_s1ngv"]
+[ext_resource type="Texture2D" uid="uid://3cw1jkdlqo1r" path="res://sprites/cards/bubbles.png" id="3_s1ngv"]
+
+[resource]
+script = ExtResource("1_l62is")
+name = "Bubbles"
+texture = ExtResource("3_s1ngv")
+spell_cast = ExtResource("2_s1ngv")
+metadata/_custom_type_script = "uid://dxaqev8o1id3w"

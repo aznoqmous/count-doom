@@ -1,7 +1,18 @@
 [gd_scene format=3 uid="uid://ctfm1h873bc3k"]
 
 [ext_resource type="PackedScene" uid="uid://8s5bgj71rnc3" path="res://scenes/entities/_foe.tscn" id="1_jsapg"]
+[ext_resource type="Shader" uid="uid://c7owmrdjhjnps" path="res://shaders/living_entities.gdshader" id="2_wr5wn"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c0pef"]
+resource_local_to_scene = true
+shader = ExtResource("2_wr5wn")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/color_ratio = 0.0
 
 [node name="Spider" unique_id=521734191 instance=ExtResource("1_jsapg")]
 move_each = 2
 max_health = 1
+sprite_material = SubResource("ShaderMaterial_c0pef")
+
+[node name="Sprite2D" parent="SpritesContainer" parent_id_path=PackedInt32Array(870819497) index="0" unique_id=2042838768]
+material = SubResource("ShaderMaterial_c0pef")

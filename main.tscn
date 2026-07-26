@@ -4,23 +4,38 @@
 [ext_resource type="TileSet" uid="uid://dkla0dyqjbvjj" path="res://tileset.tres" id="2_h2yge"]
 [ext_resource type="Script" uid="uid://ca2u5p05xq1lt" path="res://scripts/entities/player.gd" id="3_1bvp3"]
 [ext_resource type="Texture2D" uid="uid://bbvpyxx2gsr2y" path="res://sprites/player.png" id="3_h2yge"]
-[ext_resource type="Script" uid="uid://dxaqev8o1id3w" path="res://scripts/resources/spell_resource.gd" id="3_kek77"]
 [ext_resource type="Script" uid="uid://c24puqccwhg40" path="res://scripts/uis/number_container.gd" id="6_5vw27"]
 [ext_resource type="PackedScene" uid="uid://r1lyuaubwhdi" path="res://scenes/uis/number_control.tscn" id="6_7mycd"]
-[ext_resource type="Resource" uid="uid://byirslqc51dbt" path="res://resources/spells/fire_ball.tres" id="7_272bh"]
 [ext_resource type="PackedScene" uid="uid://c4j0rtnlel4v1" path="res://scenes/entities/objects/skull_entity.tscn" id="7_a6jrf"]
 [ext_resource type="TileSet" uid="uid://co4n8ecng1opt" path="res://resources/tileset.tres" id="7_yaehf"]
 [ext_resource type="Texture2D" uid="uid://c8r3kr1dv7eko" path="res://sprites/cards/card-fire.png" id="8_efxa6"]
 [ext_resource type="PackedScene" uid="uid://cxyth1lpkwwu2" path="res://scenes/entities/objects/chest_entity.tscn" id="8_xuqvo"]
+[ext_resource type="Texture2D" uid="uid://cs0rri6dxqija" path="res://sprites/spi.png" id="9_1u8w0"]
 [ext_resource type="PackedScene" uid="uid://cg3w24e06cjr3" path="res://scenes/entities/objects/spell_stand_entity.tscn" id="9_qsp4k"]
 [ext_resource type="Texture2D" uid="uid://bq5gvu3fk5ncb" path="res://sprites/heart.png" id="9_vivmo"]
+[ext_resource type="Script" uid="uid://cpybcqrjvfhe8" path="res://scripts/uis/spi.gd" id="10_0odxb"]
 [ext_resource type="FontFile" uid="uid://b0lwjdjdande4" path="res://Gaegu-Bold.ttf" id="10_2cqfq"]
 [ext_resource type="PackedScene" uid="uid://bfs1gcr6av76g" path="res://scenes/entities/objects/stone_entity.tscn" id="10_kq58d"]
 [ext_resource type="PackedScene" uid="uid://de0s4tg2x2hoi" path="res://scenes/entities/objects/trap_entity.tscn" id="11_seu75"]
 [ext_resource type="PackedScene" uid="uid://drjkbs5kvysk3" path="res://scenes/entities/objects/exit_entity.tscn" id="12_xuqvo"]
 [ext_resource type="Shader" uid="uid://c7owmrdjhjnps" path="res://shaders/living_entities.gdshader" id="13_getpj"]
 [ext_resource type="PackedScene" uid="uid://cpy4igtc5bfgs" path="res://scenes/pcg/generator.tscn" id="17_074og"]
-[ext_resource type="PackedScene" uid="uid://d01i7siog8vab" path="res://scenes/pcg/graphs/graph_test.tscn" id="18_074og"]
+[ext_resource type="PackedScene" uid="uid://d01i7siog8vab" path="res://scenes/pcg/graphs/level_1.tscn" id="18_074og"]
+[ext_resource type="Script" uid="uid://dskl5xk3nulbu" path="res://scripts/uis/unlock_container.gd" id="20_d13ii"]
+[ext_resource type="Theme" uid="uid://klqjr2rljrfl" path="res://resources/gaegu.tres" id="21_1u8w0"]
+[ext_resource type="PackedScene" uid="uid://bjqstc53kj4aw" path="res://scenes/pcg/graphs/level_0.tscn" id="21_ryguw"]
+[ext_resource type="PackedScene" uid="uid://d2pvbiq7gfxg0" path="res://scenes/pcg/graphs/level_2.tscn" id="25_0odxb"]
+
+[sub_resource type="Environment" id="Environment_y201y"]
+background_mode = 3
+glow_enabled = true
+glow_intensity = 1.0
+glow_bloom = 0.1
+fog_mode = 1
+fog_light_energy = 3.47
+fog_density = 1.0
+adjustment_enabled = true
+adjustment_contrast = 1.2
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0wbid"]
 shader = ExtResource("13_getpj")
@@ -32,8 +47,11 @@ font = ExtResource("10_2cqfq")
 font_size = 42
 outline_size = 1
 
-[node name="Main" type="Node2D" unique_id=1080260412 node_paths=PackedStringArray("tile_map_layer", "foes_container", "projectiles_container", "objects_container", "generator", "player", "number_container")]
+[sub_resource type="CanvasTexture" id="CanvasTexture_y201y"]
+
+[node name="Main" type="Node2D" unique_id=1080260412 node_paths=PackedStringArray("credits", "tile_map_layer", "foes_container", "projectiles_container", "objects_container", "generator", "player", "number_container", "unlock_container", "spells_display_container", "astar_debug_layer", "cell_containers", "path_layer")]
 script = ExtResource("1_0xm2m")
+credits = NodePath("CanvasLayer/Credits")
 tileset = ExtResource("2_h2yge")
 tile_map_layer = NodePath("World/TileMapLayer")
 foes_container = NodePath("World/FoesContainer")
@@ -41,14 +59,44 @@ projectiles_container = NodePath("World/ProjectilesContainer")
 objects_container = NodePath("World/ObjectsContainer")
 generator = NodePath("Generator")
 player = NodePath("World/Player")
-spells = Array[ExtResource("3_kek77")]([ExtResource("7_272bh")])
+count_down_length = 5
 number_container = NodePath("CanvasLayer/NumberContainer")
+unlock_container = NodePath("CanvasLayer/UnlockContainer")
+spells_display_container = NodePath("World/SpellsDisplayContainer")
 skull_scene = ExtResource("7_a6jrf")
 chest_scene = ExtResource("8_xuqvo")
 spell_stand_scene = ExtResource("9_qsp4k")
 stone_scene = ExtResource("10_kq58d")
 trap_scene = ExtResource("11_seu75")
 exit_scene = ExtResource("12_xuqvo")
+astar_debug_layer = NodePath("World/AstarDebugLayer")
+cell_containers = [NodePath("Levels/Level0"), NodePath("Levels/Level1"), NodePath("Levels/Level2")]
+path_layer = NodePath("World/PathLayer")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1409539409]
+environment = SubResource("Environment_y201y")
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=56985867]
+layer = -1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer2" unique_id=1077653111]
+modulate = Color(0.16334935, 0.11672974, 0.17578125, 1)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -91.25513
+offset_top = -376.43018
+offset_right = 91.25513
+offset_bottom = 376.43018
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -2752.9878
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("9_1u8w0")
+expand_mode = 4
+stretch_mode = 5
+script = ExtResource("10_0odxb")
+speed = -1.0
 
 [node name="World" type="Node2D" parent="." unique_id=349111133]
 
@@ -57,8 +105,18 @@ modulate = Color(0.43137255, 0.3137255, 0.45490196, 1)
 position = Vector2(-60, -74)
 tile_set = ExtResource("7_yaehf")
 
-[node name="Player" type="Node2D" parent="World" unique_id=1997000520 node_paths=PackedStringArray("spell_sprite", "hp_label", "sprites_container", "debug_label")]
+[node name="PathLayer" type="TileMapLayer" parent="World" unique_id=1368775494]
+modulate = Color(0.6511131, 0.44293213, 0.69140625, 1)
+position = Vector2(-60, -74)
+tile_set = ExtResource("7_yaehf")
+
+[node name="AstarDebugLayer" type="TileMapLayer" parent="World" unique_id=1002286581]
+visible = false
 z_index = 1
+position = Vector2(-60, -74)
+tile_set = ExtResource("7_yaehf")
+
+[node name="Player" type="Node2D" parent="World" unique_id=1997000520 node_paths=PackedStringArray("spell_sprite", "hp_label", "sprites_container", "debug_label")]
 script = ExtResource("3_1bvp3")
 spell_sprite = NodePath("SpellSprite")
 hp_label = NodePath("HpLabel")
@@ -67,6 +125,7 @@ sprites_container = NodePath("SpritesContainer")
 debug_label = NodePath("DebugLabel")
 
 [node name="SpritesContainer" type="Node2D" parent="World/Player" unique_id=999815704]
+z_index = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="World/Player/SpritesContainer" unique_id=2119023179]
 material = SubResource("ShaderMaterial_0wbid")
@@ -115,6 +174,8 @@ horizontal_alignment = 1
 
 [node name="ObjectsContainer" type="Node2D" parent="World" unique_id=1256360141]
 
+[node name="SpellsDisplayContainer" type="Node2D" parent="World" unique_id=207324346]
+
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=530670496]
 
 [node name="NumberContainer" type="Control" parent="CanvasLayer" unique_id=241174823 node_paths=PackedStringArray("container")]
@@ -124,6 +185,8 @@ anchor_right = 1.0
 offset_top = 26.0
 offset_bottom = 75.0
 grow_horizontal = 2
+mouse_filter = 2
+mouse_behavior_recursive = 1
 script = ExtResource("6_5vw27")
 container = NodePath("Container")
 
@@ -163,9 +226,166 @@ number = 5
 layout_mode = 2
 number = 4
 
-[node name="Generator" parent="." unique_id=92561272 node_paths=PackedStringArray("cells_container") instance=ExtResource("17_074og")]
-modulate = Color(0.43137255, 0.3137255, 0.45490196, 1)
-seed = "590098"
-cells_container = NodePath("CellsContainer")
+[node name="UnlockContainer" type="Control" parent="CanvasLayer" unique_id=1656657431 node_paths=PackedStringArray("confirm_buttom", "number_container")]
+visible = false
+z_index = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("20_d13ii")
+confirm_buttom = NodePath("Button")
+number_container = NodePath("VBoxContainer/NumberContainer")
 
-[node name="CellsContainer" parent="Generator" unique_id=937675435 instance=ExtResource("18_074og")]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/UnlockContainer" unique_id=1508529611]
+modulate = Color(0, 0, 0, 0.7411765)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CanvasTexture_y201y")
+
+[node name="Button" type="Button" parent="CanvasLayer/UnlockContainer" unique_id=512805477]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -29.0
+offset_top = -80.0
+offset_right = 29.0
+offset_bottom = -47.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_default_cursor_shape = 2
+theme = ExtResource("21_1u8w0")
+text = "OK !"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/UnlockContainer" unique_id=1106884577]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -49.0
+offset_top = -66.0
+offset_right = 49.0
+offset_bottom = 66.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/UnlockContainer/VBoxContainer" unique_id=76754530]
+layout_mode = 2
+theme = ExtResource("21_1u8w0")
+theme_override_font_sizes/font_size = 41
+text = "Loadout"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="CanvasLayer/UnlockContainer/VBoxContainer" unique_id=1799116579]
+layout_mode = 2
+theme = ExtResource("21_1u8w0")
+theme_override_colors/font_color = Color(0.66015625, 0.66015625, 0.66015625, 1)
+theme_override_font_sizes/font_size = 26
+text = "Equip your spells to countdown slots !"
+horizontal_alignment = 1
+
+[node name="NumberContainer" type="Control" parent="CanvasLayer/UnlockContainer/VBoxContainer" unique_id=967005447 node_paths=PackedStringArray("container")]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+script = ExtResource("6_5vw27")
+container = NodePath("Container")
+
+[node name="Container" type="HBoxContainer" parent="CanvasLayer/UnlockContainer/VBoxContainer/NumberContainer" unique_id=1466322408]
+z_index = 1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -155.0
+offset_right = 155.0
+offset_bottom = 60.0
+grow_horizontal = 2
+theme_override_constants/separation = -10
+alignment = 1
+
+[node name="NumberControl" parent="CanvasLayer/UnlockContainer/VBoxContainer/NumberContainer/Container" unique_id=286489762 instance=ExtResource("6_7mycd")]
+layout_mode = 2
+
+[node name="NumberControl2" parent="CanvasLayer/UnlockContainer/VBoxContainer/NumberContainer/Container" unique_id=2091325052 instance=ExtResource("6_7mycd")]
+layout_mode = 2
+number = 8
+
+[node name="NumberControl3" parent="CanvasLayer/UnlockContainer/VBoxContainer/NumberContainer/Container" unique_id=2088280729 instance=ExtResource("6_7mycd")]
+layout_mode = 2
+number = 7
+
+[node name="NumberControl4" parent="CanvasLayer/UnlockContainer/VBoxContainer/NumberContainer/Container" unique_id=159971363 instance=ExtResource("6_7mycd")]
+layout_mode = 2
+number = 6
+
+[node name="NumberControl5" parent="CanvasLayer/UnlockContainer/VBoxContainer/NumberContainer/Container" unique_id=1486948159 instance=ExtResource("6_7mycd")]
+layout_mode = 2
+number = 5
+
+[node name="NumberControl6" parent="CanvasLayer/UnlockContainer/VBoxContainer/NumberContainer/Container" unique_id=195343253 instance=ExtResource("6_7mycd")]
+layout_mode = 2
+number = 4
+
+[node name="Credits" type="Control" parent="CanvasLayer" unique_id=435488388]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Credits" unique_id=1036000059]
+modulate = Color(0, 0, 0, 0.19607843)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CanvasTexture_y201y")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Credits" unique_id=887246190]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("21_1u8w0")
+bbcode_enabled = true
+text = "THE END
+
+Props on you for surviving that buggy game !
+
+_______________________________________________________________
+
+Press R to restart or leave a kind comment"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Generator" parent="." unique_id=92561272 instance=ExtResource("17_074og")]
+modulate = Color(0.43137255, 0.3137255, 0.45490196, 1)
+seed = "276572"
+
+[node name="Levels" type="Node2D" parent="." unique_id=1393325108]
+visible = false
+
+[node name="Level0" parent="Levels" unique_id=937675435 instance=ExtResource("21_ryguw")]
+
+[node name="Level1" parent="Levels" unique_id=1198662035 instance=ExtResource("18_074og")]
+
+[node name="Level2" parent="Levels" unique_id=613598944 instance=ExtResource("25_0odxb")]

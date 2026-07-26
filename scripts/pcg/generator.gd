@@ -70,14 +70,14 @@ var current_direction: Vector2i
 var random_number_generator: RandomNumberGenerator
 
 func _ready():
-	cells_container.child_entered_tree.connect(func(cell: CellNode):
-		cell.changed.connect(generate_cells)
-	)
-	for cell in cells_container.get_children():
-		cell = cell as CellNode
-		if not cell: continue
-		cell.changed.connect(generate_cells)
-
+	#cells_container.child_entered_tree.connect(func(cell: CellNode):
+		#cell.changed.connect(generate_cells)
+	#)
+	#for cell in cells_container.get_children():
+		#cell = cell as CellNode
+		#if not cell: continue
+		#cell.changed.connect(generate_cells)
+	pass
 #func _process(delta) -> void:
 	#if Input.is_action_just_pressed("ui_down"):
 		#wait_for_next_step = false

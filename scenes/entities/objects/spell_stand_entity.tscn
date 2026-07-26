@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bg7fikhd87ui6" path="res://sprites/card-thunder.png" id="5_erlo6"]
 [ext_resource type="Resource" uid="uid://bsyeu0uampni1" path="res://resources/spells/rock.tres" id="5_kltyp"]
 [ext_resource type="Resource" uid="uid://3k10hilqdhf1" path="res://resources/spells/thunder.tres" id="6_y82km"]
+[ext_resource type="Resource" uid="uid://bw8ouslyovyif" path="res://resources/spells/bubbles.tres" id="7_kltyp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_erlo6"]
 atlas = ExtResource("3_1qlfo")
@@ -34,7 +35,7 @@ scale_curve = SubResource("CurveTexture_bt5qc")
 [node name="StandEntity" unique_id=521734191 node_paths=PackedStringArray("spell_sprites_container", "spell_sprite") instance=ExtResource("1_tey7v")]
 script = ExtResource("2_upq67")
 spell_sprites_container = NodePath("Node2D")
-available_spells = Array[ExtResource("3_erlo6")]([ExtResource("4_eypj7"), ExtResource("5_kltyp"), ExtResource("6_y82km")])
+available_spells = Array[ExtResource("3_erlo6")]([ExtResource("4_eypj7"), ExtResource("5_kltyp"), ExtResource("6_y82km"), ExtResource("7_kltyp")])
 spell_sprite = NodePath("Node2D/Sprite2D2")
 destroyed_on_interact = false
 

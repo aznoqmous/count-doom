@@ -4,7 +4,18 @@
 [ext_resource type="PackedScene" uid="uid://y5ji7ku56iol" path="res://scenes/entities/projectiles/fire_ball.tscn" id="2_2u8et"]
 
 [node name="FireballCast" unique_id=329227150 instance=ExtResource("1_rn2pb")]
-direction_oriented = true
 
 [node name="FireBall" parent="." index="0" unique_id=521734191 instance=ExtResource("2_2u8et")]
 position = Vector2(120, 0)
+
+[node name="FireBall2" parent="." index="1" unique_id=1939163560 instance=ExtResource("2_2u8et")]
+position = Vector2(-120, 0)
+position_oriented = true
+
+[node name="FireBall3" parent="." index="2" unique_id=2107599335 instance=ExtResource("2_2u8et")]
+position = Vector2(0, 120)
+position_oriented = true
+
+[node name="FireBall4" parent="." index="3" unique_id=1536722183 instance=ExtResource("2_2u8et")]
+position = Vector2(0, -120)
+position_oriented = true

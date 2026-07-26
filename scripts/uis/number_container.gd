@@ -7,6 +7,7 @@ var number_controls: Array[NumberControl]
 @export var container: HBoxContainer
 
 func build_countdown(length):
+	number_controls.clear()
 	for nc in container.get_children(): nc.queue_free()
 	for i in length:
 		var nc = NUMBER_CONTROL.instantiate() as NumberControl
@@ -23,6 +24,17 @@ func build_countdown(length):
 				n.selection_opened = nc == n
 		)
 
+func paste(nc: NumberContainer):
+	var spells = get_spells()
+	nc.build_countdown(spells.size())
+	nc.set_spells(spells)
+	
+func set_spells(srs: Array):
+	for i in number_controls.size():
+		number_controls[i].spell_resource = srs[i]
+		
+func get_spells():
+	return number_controls.map(func(nc): return nc.spell_resource)
 
 func close_spells():
 	for n in number_controls:

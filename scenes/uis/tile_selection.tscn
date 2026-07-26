@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://w351nxg5k7wl"]
+
+[ext_resource type="Script" uid="uid://cimgfym3o1wjr" path="res://scripts/uis/tile_selection.gd" id="1_mjhst"]
+[ext_resource type="Texture2D" uid="uid://dohnfo0tdvhcm" path="res://sprites/tiles.png" id="2_m5vqm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y201y"]
+atlas = ExtResource("2_m5vqm")
+region = Rect2(0, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mjhst"]
+atlas = ExtResource("2_m5vqm")
+region = Rect2(150, 0, 150, 150)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y201y"]
+size = Vector2(120, 120)
+
+[node name="TileSelection" type="Node2D" unique_id=1141575203 node_paths=PackedStringArray("hovered_sprite", "default_sprite", "area_2d")]
+modulate = Color(0.43137255, 0.3137255, 0.45490196, 1)
+script = ExtResource("1_mjhst")
+hovered_sprite = NodePath("Hovered")
+default_sprite = NodePath("Defaul")
+area_2d = NodePath("Area2D")
+metadata/_edit_group_ = true
+
+[node name="Defaul" type="Sprite2D" parent="." unique_id=509926385]
+scale = Vector2(0.9, 0.9)
+texture = SubResource("AtlasTexture_y201y")
+
+[node name="Hovered" type="Sprite2D" parent="." unique_id=304065001]
+visible = false
+scale = Vector2(0.9, 0.9)
+texture = SubResource("AtlasTexture_mjhst")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1367068891]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=755795049]
+shape = SubResource("RectangleShape2D_y201y")
